@@ -16,7 +16,7 @@ const Market = () => {
               Market & Trade
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive analysis of uranium markets, pricing trends, and global trade patterns
+              Real-time uranium pricing data, market trends, and international trade analysis
             </p>
           </div>
         </section>

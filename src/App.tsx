@@ -10,6 +10,7 @@ import Safety from "./pages/Safety";
 import Education from "./pages/Education";
 import Technology from "./pages/Technology";
 import Legal from "./pages/Legal";
+import Kids from "./pages/Kids";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/education" element={<Education />} />
           <Route path="/technology" element={<Technology />} />
           <Route path="/legal" element={<Legal />} />
+          <Route path="/kids" element={<Kids />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

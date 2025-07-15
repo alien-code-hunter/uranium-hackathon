@@ -1,10 +1,10 @@
 import React from 'react';
 import Navigation from '@/components/Navigation';
-import AISection from '@/components/AISection';
-import WhatsLackingSection from '@/components/WhatsLackingSection';
+import KidsSection from '@/components/KidsSection';
+import KidsLearning from '@/components/KidsLearning';
 import Footer from '@/components/Footer';
 
-const Technology = () => {
+const Kids = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -12,19 +12,19 @@ const Technology = () => {
         <section className="py-20 bg-gradient-subtle">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Technology and AI in Uranium Mining & Nuclear Industry
+              Kids Learning Zone
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Advanced technologies, artificial intelligence applications, and areas for future development in uranium mining
+              Fun and interactive learning about uranium, nuclear science, and mining for young explorers
             </p>
           </div>
         </section>
-        <AISection />
-        <WhatsLackingSection />
+        <KidsSection />
+        <KidsLearning />
       </main>
       <Footer />
     </div>
   );
 };
 
-export default Technology;
+export default Kids;

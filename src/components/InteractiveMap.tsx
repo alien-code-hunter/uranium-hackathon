@@ -31,7 +31,7 @@ const InteractiveMap = () => {
       id: 'rossing',
       name: 'Rössing Uranium Mine',
       type: 'Open Pit',
-      coordinates: [15.2167, -22.4667],
+      coordinates: [15.2167, -22.4667], // -22°28'0.12"S, 15°13'0.12"E
       production: '2,400 tonnes U3O8/year',
       operator: 'China National Uranium Corporation (CNUC)',
       status: 'Active',
@@ -44,7 +44,7 @@ const InteractiveMap = () => {
       id: 'husab',
       name: 'Husab Uranium Mine',
       type: 'Open Pit',
-      coordinates: [14.8333, -22.5],
+      coordinates: [14.8333, -22.5], // -22°30'0"S, 14°50'0"E
       production: '5,500 tonnes U3O8/year',
       operator: 'Swakop Uranium (Pty) Ltd',
       status: 'Active',
@@ -57,7 +57,7 @@ const InteractiveMap = () => {
       id: 'langer-heinrich',
       name: 'Langer Heinrich Mine',
       type: 'Open Pit',
-      coordinates: [15.3333, -23.0],
+      coordinates: [15.3333, -23.0], // -23°0'0"S, 15°20'0"E
       production: '1,500 tonnes U3O8/year',
       operator: 'Paladin Energy Ltd (75%)',
       status: 'Active',
@@ -70,7 +70,7 @@ const InteractiveMap = () => {
       id: 'trekkopje',
       name: 'Trekkopje Project',
       type: 'Open Pit',
-      coordinates: [14.9167, -22.7],
+      coordinates: [14.9167, -22.7], // -22°42'0"S, 14°55'0"E
       production: 'Planned: 1,360 tonnes U3O8/year',
       operator: 'Areva Resources Namibia',
       status: 'Suspended',
@@ -84,8 +84,9 @@ const InteractiveMap = () => {
   useEffect(() => {
     if (!mapContainer.current) return;
 
-    // Initialize map
-    mapboxgl.accessToken = 'pk.eyJ1IjoibG92YWJsZS1kZW1vIiwiYSI6ImNscWc4NW1zZzBjeTMyaXFuODR2a3JqNzQifQ.example'; // Demo token, user should replace
+    // Initialize map - User needs to provide their Mapbox token
+    const mapboxToken = 'YOUR_MAPBOX_TOKEN_HERE'; // Get from https://mapbox.com/
+    mapboxgl.accessToken = mapboxToken;
     
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
@@ -136,10 +137,10 @@ const InteractiveMap = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">
-            Interactive Mining Map
+            Mining Map
           </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Explore Namibia's uranium mining locations, production data, and operational details
+            Explore Namibia's uranium deposits, operating mines, and infrastructure on the map platform.
           </p>
         </div>
 
@@ -149,14 +150,18 @@ const InteractiveMap = () => {
             <Card className="bg-card/90 backdrop-blur-sm">
               <CardContent className="p-0">
                 <div ref={mapContainer} className="h-[500px] rounded-lg overflow-hidden" />
-                {!mapboxgl.accessToken && (
+                {!mapboxgl.accessToken || mapboxgl.accessToken === 'YOUR_MAPBOX_TOKEN_HERE' ? (
                   <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-white p-4 rounded-lg">
                     <div className="text-center">
-                      <p className="mb-2">Map requires Mapbox token</p>
-                      <p className="text-sm opacity-80">Get your free token at mapbox.com</p>
+                      <p className="mb-4 text-lg font-semibold">Interactive Map Portal</p>
+                      <p className="mb-2">To activate the interactive map, you need a Mapbox API key</p>
+                      <p className="text-sm opacity-80 mb-4">Get your free token at mapbox.com</p>
+                      <Button variant="secondary" size="sm">
+                        Access Map Portal
+                      </Button>
                     </div>
                   </div>
-                )}
+                ) : null}
               </CardContent>
             </Card>
           </div>

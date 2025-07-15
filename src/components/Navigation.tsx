@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Globe, BookOpen, MapPin, BarChart3, Shield, Cpu, Scale } from 'lucide-react';
+import { Menu, X, Globe, BookOpen, MapPin, BarChart3, Shield, Cpu, Scale, Baby } from 'lucide-react';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
     { name: 'Home', href: '/', icon: Globe },
@@ -14,6 +15,7 @@ const Navigation = () => {
     { name: 'Education', href: '/education', icon: BookOpen },
     { name: 'Technology', href: '/technology', icon: Cpu },
     { name: 'Legal', href: '/legal', icon: Scale },
+    { name: 'Kids', href: '/kids', icon: Baby },
   ];
 
   return (
@@ -34,11 +36,16 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => {
               const Icon = item.icon;
+              const isActive = location.pathname === item.href;
               return (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className="flex items-center space-x-2 text-muted-foreground hover:text-uranium transition-colors duration-200"
+                  className={`flex items-center space-x-2 transition-colors duration-200 ${
+                    isActive 
+                      ? 'text-uranium font-medium' 
+                      : 'text-muted-foreground hover:text-uranium'
+                  }`}
                 >
                   <Icon className="w-4 h-4" />
                   <span>{item.name}</span>
@@ -67,11 +74,16 @@ const Navigation = () => {
           <div className="md:hidden py-4 space-y-2 border-t border-border">
             {navItems.map((item) => {
               const Icon = item.icon;
+              const isActive = location.pathname === item.href;
               return (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className="flex items-center space-x-3 px-3 py-2 text-muted-foreground hover:text-uranium hover:bg-muted rounded-md transition-colors duration-200"
+                  className={`flex items-center space-x-3 px-3 py-2 rounded-md transition-colors duration-200 ${
+                    isActive 
+                      ? 'text-uranium bg-muted font-medium' 
+                      : 'text-muted-foreground hover:text-uranium hover:bg-muted'
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   <Icon className="w-4 h-4" />

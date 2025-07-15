@@ -17,14 +17,12 @@ const Education = () => {
               Educational Resources
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive learning materials for students, researchers, and young scientists
+              Access comprehensive learning materials, research papers, datasets, and interactive content
             </p>
           </div>
         </section>
         <EducationSection />
         <EducationalContent />
-        <KidsSection />
-        <KidsLearning />
       </main>
       <Footer />
     </div>

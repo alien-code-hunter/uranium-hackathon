@@ -271,46 +271,102 @@ const GeologySection = () => {
         <Tabs defaultValue="drilling" className="w-full mb-16">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="drilling">Drilling & Extraction</TabsTrigger>
-            <TabsTrigger value="geophysics">Geophysical Methods</TabsTrigger>
-            <TabsTrigger value="geochemistry">Geochemical Analysis</TabsTrigger>
+            <TabsTrigger value="geophysical">Geophysical Methods</TabsTrigger>
+            <TabsTrigger value="geochemical">Geochemical Analysis</TabsTrigger>
           </TabsList>
 
-          {extractionTechnologies.map((category, categoryIndex) => (
-            <TabsContent 
-              key={categoryIndex} 
-              value={category.category.toLowerCase().split(' ')[0]} 
-              className="space-y-6"
-            >
-              <Card className="bg-card/80 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle>{category.category}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {category.technologies.map((tech, techIndex) => (
-                      <div key={techIndex} className="p-4 border border-border/50 rounded-lg">
-                        <div className="flex items-center justify-between mb-2">
-                          <h4 className="font-semibold">{tech.name}</h4>
-                          <Badge variant="secondary">{tech.efficiency}</Badge>
-                        </div>
-                        <p className="text-sm text-muted-foreground mb-3">{tech.description}</p>
-                        <div>
-                          <h5 className="font-medium text-sm mb-1">Applications:</h5>
-                          <div className="flex flex-wrap gap-1">
-                            {tech.applications.map((app, appIndex) => (
-                              <Badge key={appIndex} variant="outline" className="text-xs">
-                                {app}
-                              </Badge>
-                            ))}
-                          </div>
+          <TabsContent value="drilling" className="space-y-6">
+            <Card className="bg-card/80 backdrop-blur-sm">
+              <CardHeader>
+                <CardTitle>Advanced Drilling Techniques</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {extractionTechnologies[0].technologies.map((tech, techIndex) => (
+                    <div key={techIndex} className="p-4 border border-border/50 rounded-lg">
+                      <div className="flex items-center justify-between mb-2">
+                        <h4 className="font-semibold">{tech.name}</h4>
+                        <Badge variant="secondary">{tech.efficiency}</Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground mb-3">{tech.description}</p>
+                      <div>
+                        <h5 className="font-medium text-sm mb-1">Applications:</h5>
+                        <div className="flex flex-wrap gap-1">
+                          {tech.applications.map((app, appIndex) => (
+                            <Badge key={appIndex} variant="outline" className="text-xs">
+                              {app}
+                            </Badge>
+                          ))}
                         </div>
                       </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          ))}
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="geophysical" className="space-y-6">
+            <Card className="bg-card/80 backdrop-blur-sm">
+              <CardHeader>
+                <CardTitle>Geophysical Methods</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {extractionTechnologies[1].technologies.map((tech, techIndex) => (
+                    <div key={techIndex} className="p-4 border border-border/50 rounded-lg">
+                      <div className="flex items-center justify-between mb-2">
+                        <h4 className="font-semibold">{tech.name}</h4>
+                        <Badge variant="secondary">{tech.efficiency}</Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground mb-3">{tech.description}</p>
+                      <div>
+                        <h5 className="font-medium text-sm mb-1">Applications:</h5>
+                        <div className="flex flex-wrap gap-1">
+                          {tech.applications.map((app, appIndex) => (
+                            <Badge key={appIndex} variant="outline" className="text-xs">
+                              {app}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="geochemical" className="space-y-6">
+            <Card className="bg-card/80 backdrop-blur-sm">
+              <CardHeader>
+                <CardTitle>Geochemical Analysis</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {extractionTechnologies[2].technologies.map((tech, techIndex) => (
+                    <div key={techIndex} className="p-4 border border-border/50 rounded-lg">
+                      <div className="flex items-center justify-between mb-2">
+                        <h4 className="font-semibold">{tech.name}</h4>
+                        <Badge variant="secondary">{tech.efficiency}</Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground mb-3">{tech.description}</p>
+                      <div>
+                        <h5 className="font-medium text-sm mb-1">Applications:</h5>
+                        <div className="flex flex-wrap gap-1">
+                          {tech.applications.map((app, appIndex) => (
+                            <Badge key={appIndex} variant="outline" className="text-xs">
+                              {app}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
         </Tabs>
 
         {/* Mining Techniques */}

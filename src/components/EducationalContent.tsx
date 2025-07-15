@@ -117,6 +117,106 @@ const EducationalContent = () => {
     }
   ];
 
+  const strategicLocations = [
+    {
+      location: 'Erongo Region',
+      significance: 'Primary uranium mining hub hosting Rössing and Husab mines',
+      advantages: ['Proximity to Swakopmund port', 'Established infrastructure', 'Skilled workforce'],
+      challenges: ['Water scarcity', 'Remote location', 'Environmental sensitivity']
+    },
+    {
+      location: 'Hardap Region', 
+      significance: 'Home to Langer Heinrich mine and potential expansion areas',
+      advantages: ['Rail connections', 'Geological potential', 'Government support'],
+      challenges: ['Infrastructure development needs', 'Community engagement', 'Power supply']
+    }
+  ];
+
+  const miningMethods = [
+    {
+      method: 'Open Pit Mining',
+      description: 'Large-scale surface excavation for near-surface uranium deposits',
+      process: 'Overburden removal → Ore extraction → Processing → Rehabilitation',
+      advantages: ['High production capacity', 'Lower operating costs', 'Equipment accessibility'],
+      challenges: ['Environmental impact', 'Large water requirements', 'Community displacement'],
+      applications: 'Rössing, Husab, and Langer Heinrich mines'
+    },
+    {
+      method: 'In-Situ Leaching (ISL)',
+      description: 'Chemical solution injection to dissolve uranium underground',
+      process: 'Well drilling → Solution injection → Uranium dissolution → Recovery',
+      advantages: ['Minimal surface disturbance', 'Lower environmental footprint', 'Cost effective'],
+      challenges: ['Groundwater protection', 'Geological suitability', 'Long-term monitoring'],
+      applications: 'Potential future application in suitable deposits'
+    }
+  ];
+
+  const cleanEnergyData = [
+    {
+      aspect: 'Nuclear Power Generation',
+      contribution: 'Uranium provides 20% of global electricity without carbon emissions',
+      impact: 'Prevents 2.5 billion tons of CO2 annually compared to fossil fuels',
+      future: 'Essential for achieving net-zero carbon targets by 2050'
+    },
+    {
+      aspect: 'Energy Security',
+      contribution: 'Reliable baseload power generation for 24/7 electricity supply',
+      impact: 'Reduces dependence on imported fossil fuels',
+      future: 'Critical for energy independence and grid stability'
+    }
+  ];
+
+  const sustainabilityPractices = [
+    {
+      area: 'Environmental Management',
+      practices: ['Water recycling systems', 'Biodiversity conservation', 'Dust suppression'],
+      achievements: '90% water recycling at major mines',
+      targets: 'Zero net water usage by 2030'
+    },
+    {
+      area: 'Land Rehabilitation',
+      practices: ['Progressive rehabilitation', 'Native vegetation restoration', 'Soil reconstruction'],
+      achievements: '2,500 hectares rehabilitated since 2010',
+      targets: 'Complete rehabilitation within 5 years of closure'
+    }
+  ];
+
+  const communityImpact = [
+    {
+      category: 'Employment',
+      direct: '8,500+ direct jobs in uranium mining',
+      indirect: '25,000+ indirect and induced jobs',
+      development: 'Skills training and capacity building programs'
+    },
+    {
+      category: 'Infrastructure',
+      direct: 'Roads, hospitals, schools, and utilities development',
+      indirect: 'Improved telecommunications and services',
+      development: 'Long-term community development partnerships'
+    }
+  ];
+
+  const economicGrowth = [
+    {
+      indicator: 'GDP Contribution',
+      current: 'Uranium mining contributes 5-8% to Namibian GDP',
+      trend: 'Steady growth with new mines coming online',
+      projection: 'Expected to reach 12% by 2030 with expansion projects'
+    },
+    {
+      indicator: 'Export Revenue',
+      current: 'US$1.2 billion annually from uranium exports',
+      trend: '15% average annual growth over past decade',
+      projection: 'Target of US$2 billion by 2028'
+    },
+    {
+      indicator: 'Tax Revenue',
+      current: 'N$2.5 billion in taxes and royalties annually',
+      trend: 'Increasing with production growth',
+      projection: 'Expected to double with new developments'
+    }
+  ];
+
   const learningPaths = [
     {
       id: 'beginner-path',
@@ -138,27 +238,64 @@ const EducationalContent = () => {
       ]
     },
     {
-      id: 'professional-path',
-      title: 'Advanced Mining Operations',
-      duration: '12-16 weeks',
+      id: 'strategic-locations',
+      title: 'Strategic Mining Locations',
+      duration: '4 weeks',
+      modules: 6,
+      level: 'Intermediate',
+      description: 'Detailed analysis of strategic uranium mining locations in Namibia.',
+      progress: 0,
+      topics: strategicLocations.map(loc => `${loc.location}: ${loc.significance}`)
+    },
+    {
+      id: 'mining-methods',
+      title: 'Advanced Mining Methods',
+      duration: '8 weeks',
+      modules: 10,
+      level: 'Professional',
+      description: 'Comprehensive study of uranium mining techniques and technologies.',
+      progress: 0,
+      topics: miningMethods.map(method => `${method.method}: ${method.description}`)
+    },
+    {
+      id: 'clean-energy',
+      title: 'Clean Energy & Nuclear Power',
+      duration: '6 weeks',
+      modules: 8,
+      level: 'Intermediate',
+      description: 'Understanding uranium\'s role in clean energy transition.',
+      progress: 0,
+      topics: cleanEnergyData.map(aspect => `${aspect.aspect}: ${aspect.contribution}`)
+    },
+    {
+      id: 'sustainability',
+      title: 'Sustainable Mining Practices',
+      duration: '10 weeks',
       modules: 12,
       level: 'Professional',
-      description: 'Advanced technical knowledge for mining professionals and engineers.',
+      description: 'Environmental stewardship and sustainable development in uranium mining.',
       progress: 0,
-      topics: [
-        'Advanced Geological Modeling',
-        'Mine Planning and Design',
-        'Advanced Processing Technologies',
-        'Environmental Impact Assessment',
-        'Health Physics and Radiation Safety',
-        'Quality Control and Assurance',
-        'Project Management',
-        'International Regulations',
-        'Economic Analysis',
-        'Technology Innovation',
-        'Sustainability Practices',
-        'Leadership in Mining'
-      ]
+      topics: sustainabilityPractices.map(practice => `${practice.area}: ${practice.practices.join(', ')}`)
+    },
+    {
+      id: 'community-impact',
+      title: 'Community Development & Social Impact',
+      duration: '6 weeks',
+      modules: 8,
+      level: 'Intermediate',
+      description: 'Understanding the social and economic impacts of uranium mining on communities.',
+      progress: 0,
+      topics: communityImpact.map(impact => `${impact.category}: ${impact.direct}`)
+    },
+    {
+      id: 'economic-growth',
+      title: 'Economic Impact Analysis',
+      duration: '8 weeks',
+      modules: 10,
+      level: 'Advanced',
+      description: 'Comprehensive analysis of uranium mining\'s contribution to economic development.',
+      progress: 0,
+      topics: economicGrowth.map(indicator => `${indicator.indicator}: ${indicator.current}`)
     }
   ];
 
