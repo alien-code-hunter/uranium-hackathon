@@ -3,6 +3,8 @@ import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import OverviewSection from '@/components/OverviewSection';
 import MapSection from '@/components/MapSection';
+import MarketSection from '@/components/MarketSection';
+import ComparisonSection from '@/components/ComparisonSection';
 import EducationSection from '@/components/EducationSection';
 import SustainabilitySection from '@/components/SustainabilitySection';
 import KidsSection from '@/components/KidsSection';
@@ -16,6 +18,8 @@ const Index = () => {
         <HeroSection />
         <OverviewSection />
         <MapSection />
+        <MarketSection />
+        <ComparisonSection />
         <EducationSection />
         <SustainabilitySection />
         <KidsSection />
