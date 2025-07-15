@@ -10,6 +10,14 @@ import EducationalContent from '@/components/EducationalContent';
 import SustainabilitySection from '@/components/SustainabilitySection';
 import KidsSection from '@/components/KidsSection';
 import KidsLearning from '@/components/KidsLearning';
+import PlantOperations from '@/components/PlantOperations';
+import SafetySection from '@/components/SafetySection';
+import ImportExportSection from '@/components/ImportExportSection';
+import WasteManagementSection from '@/components/WasteManagementSection';
+import LegalSection from '@/components/LegalSection';
+import AISection from '@/components/AISection';
+import GeologySection from '@/components/GeologySection';
+import WhatsLackingSection from '@/components/WhatsLackingSection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -20,11 +28,19 @@ const Index = () => {
         <HeroSection />
         <OverviewSection />
         <MapSection />
+        <PlantOperations />
         <MarketSection />
+        <ImportExportSection />
         <ComparisonSection />
+        <GeologySection />
+        <AISection />
+        <SafetySection />
+        <WasteManagementSection />
+        <SustainabilitySection />
+        <WhatsLackingSection />
+        <LegalSection />
         <EducationSection />
         <EducationalContent />
-        <SustainabilitySection />
         <KidsSection />
         <KidsLearning />
       </main>

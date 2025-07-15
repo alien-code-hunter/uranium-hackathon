@@ -24,11 +24,11 @@ const MarketSection = () => {
   };
 
   const priceHistory = [
-    { period: '2020', global: 29.50, namibia: 28.20 },
-    { period: '2021', global: 41.25, namibia: 39.80 },
-    { period: '2022', global: 49.80, namibia: 47.50 },
-    { period: '2023', global: 91.00, namibia: 89.40 },
-    { period: '2024', global: 74.50, namibia: 73.20 }
+    { period: '2020', global: 29.50, namibia: 28.20, volume: 48000 },
+    { period: '2021', global: 41.25, namibia: 39.80, volume: 52000 },
+    { period: '2022', global: 49.80, namibia: 47.50, volume: 45000 },
+    { period: '2023', global: 91.00, namibia: 89.40, volume: 38000 },
+    { period: '2024', global: 74.50, namibia: 73.20, volume: 42000 }
   ];
 
   const keyMarkets = [
@@ -152,32 +152,65 @@ const MarketSection = () => {
           </Card>
         </div>
 
-        {/* Price History Chart */}
+        {/* Enhanced Price History Chart */}
         <Card className="bg-card/80 backdrop-blur-sm border-border/50 mb-12">
           <CardHeader>
-            <CardTitle>5-Year Price History</CardTitle>
-            <CardDescription>Uranium pricing trends (USD/lb)</CardDescription>
+            <CardTitle>5-Year Price & Volume Analysis</CardTitle>
+            <CardDescription>Uranium pricing trends and trading volumes (USD/lb)</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-64 flex items-end justify-between gap-4">
-              {priceHistory.map((data, index) => (
-                <div key={data.period} className="flex-1 flex flex-col items-center gap-2">
-                  <div className="flex gap-1 w-full">
-                    <div
-                      className="bg-primary rounded-t flex-1"
-                      style={{ height: `${(data.global / 60) * 200}px` }}
-                      title={`Global: $${data.global}`}
-                    />
-                    <div
-                      className="bg-secondary rounded-t flex-1"
-                      style={{ height: `${(data.namibia / 60) * 200}px` }}
-                      title={`Namibia: $${data.namibia}`}
-                    />
-                  </div>
-                  <span className="text-sm font-medium">{data.period}</span>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Price Chart */}
+              <div>
+                <h4 className="font-semibold mb-4">Price Trends</h4>
+                <div className="h-64 flex items-end justify-between gap-4 bg-muted/20 rounded-lg p-4">
+                  {priceHistory.map((data, index) => (
+                    <div key={data.period} className="flex-1 flex flex-col items-center gap-2">
+                      <div className="flex gap-1 w-full">
+                        <div
+                          className="bg-gradient-to-t from-primary to-primary/70 rounded-t flex-1 relative group"
+                          style={{ height: `${(data.global / 100) * 200}px` }}
+                        >
+                          <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                            ${data.global}
+                          </div>
+                        </div>
+                        <div
+                          className="bg-gradient-to-t from-secondary to-secondary/70 rounded-t flex-1 relative group"
+                          style={{ height: `${(data.namibia / 100) * 200}px` }}
+                        >
+                          <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                            ${data.namibia}
+                          </div>
+                        </div>
+                      </div>
+                      <span className="text-sm font-medium">{data.period}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              {/* Volume Chart */}
+              <div>
+                <h4 className="font-semibold mb-4">Trading Volume</h4>
+                <div className="h-64 flex items-end justify-between gap-4 bg-muted/20 rounded-lg p-4">
+                  {priceHistory.map((data, index) => (
+                    <div key={data.period} className="flex-1 flex flex-col items-center gap-2">
+                      <div
+                        className="bg-gradient-to-t from-uranium to-uranium/70 rounded-t w-full relative group"
+                        style={{ height: `${(data.volume / 60000) * 200}px` }}
+                      >
+                        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-uranium text-uranium-foreground text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                          {data.volume.toLocaleString()} lbs
+                        </div>
+                      </div>
+                      <span className="text-sm font-medium">{data.period}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
+            
             <div className="flex justify-center gap-6 mt-4">
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 bg-primary rounded" />
@@ -186,6 +219,10 @@ const MarketSection = () => {
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 bg-secondary rounded" />
                 <span className="text-sm">Namibia Price</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 bg-uranium rounded" />
+                <span className="text-sm">Trading Volume</span>
               </div>
             </div>
           </CardContent>
