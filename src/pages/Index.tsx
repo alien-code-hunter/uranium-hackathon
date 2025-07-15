@@ -6,8 +6,10 @@ import MapSection from '@/components/MapSection';
 import MarketSection from '@/components/MarketSection';
 import ComparisonSection from '@/components/ComparisonSection';
 import EducationSection from '@/components/EducationSection';
+import EducationalContent from '@/components/EducationalContent';
 import SustainabilitySection from '@/components/SustainabilitySection';
 import KidsSection from '@/components/KidsSection';
+import KidsLearning from '@/components/KidsLearning';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -21,8 +23,10 @@ const Index = () => {
         <MarketSection />
         <ComparisonSection />
         <EducationSection />
+        <EducationalContent />
         <SustainabilitySection />
         <KidsSection />
+        <KidsLearning />
       </main>
       <Footer />
     </div>

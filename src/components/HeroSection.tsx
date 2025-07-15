@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Play, MapPin, BookOpen } from 'lucide-react';
+import { ArrowRight, Play, MapPin, BookOpen, ChevronDown } from 'lucide-react';
 import heroImage from '@/assets/uranium-hero.jpg';
+import VideoPlayer from './VideoPlayer';
+import InteractiveMap from './InteractiveMap';
 
 const HeroSection = () => {
+  const [showVideo, setShowVideo] = useState(false);
+  const [showMap, setShowMap] = useState(false);
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -34,17 +38,32 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button variant="uranium" size="xl" className="group">
+            <Button 
+              variant="uranium" 
+              size="xl" 
+              className="group"
+              onClick={() => setShowMap(true)}
+            >
               Explore Interactive Map
               <MapPin className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </Button>
             
-            <Button variant="educational" size="xl" className="group">
+            <Button 
+              variant="educational" 
+              size="xl" 
+              className="group"
+              onClick={() => document.getElementById('education')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Start Learning
               <BookOpen className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </Button>
             
-            <Button variant="ghost" size="xl" className="group">
+            <Button 
+              variant="ghost" 
+              size="xl" 
+              className="group"
+              onClick={() => setShowVideo(true)}
+            >
               <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
               Watch Introduction
             </Button>
@@ -76,6 +95,38 @@ const HeroSection = () => {
           <div className="w-1 h-3 bg-uranium rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      {showVideo && (
+        <VideoPlayer
+          url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          title="Introduction to Uranium Mining in Namibia"
+          description="Discover Namibia's role as a leading uranium producer and the technology behind modern mining operations."
+          onClose={() => setShowVideo(false)}
+          autoPlay={true}
+        />
+      )}
+
+      {/* Interactive Map Modal */}
+      {showMap && (
+        <div className="fixed inset-0 bg-black/90 z-50 overflow-y-auto">
+          <div className="min-h-screen p-4">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex justify-end mb-4">
+                <Button 
+                  variant="ghost" 
+                  className="text-white hover:bg-white/20"
+                  onClick={() => setShowMap(false)}
+                >
+                  <ChevronDown className="h-4 w-4 mr-2" />
+                  Close Map
+                </Button>
+              </div>
+              <InteractiveMap />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

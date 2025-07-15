@@ -6,18 +6,20 @@ import { TrendingUp, TrendingDown, DollarSign, Globe, MapPin } from 'lucide-reac
 const MarketSection = () => {
   const marketData = {
     global: {
-      price: 48.50,
-      change: 2.3,
+      price: 74.50,
+      change: 3.8,
       trend: 'up',
-      volume: '145,000 lbs',
-      lastUpdate: '2024-07-15'
+      volume: '162,000 lbs',
+      lastUpdate: '2024-07-15',
+      source: 'TradingEconomics/UxC'
     },
     namibia: {
-      price: 46.80,
-      change: -1.2,
-      trend: 'down',
+      price: 73.20,
+      change: 2.1,
+      trend: 'up',
       production: '5,413 tonnes',
-      marketShare: '11.9%'
+      marketShare: '10.1%',
+      yearlyProduction: '2023 data'
     }
   };
 
@@ -25,15 +27,39 @@ const MarketSection = () => {
     { period: '2020', global: 29.50, namibia: 28.20 },
     { period: '2021', global: 41.25, namibia: 39.80 },
     { period: '2022', global: 49.80, namibia: 47.50 },
-    { period: '2023', global: 55.25, namibia: 52.90 },
-    { period: '2024', global: 48.50, namibia: 46.80 }
+    { period: '2023', global: 91.00, namibia: 89.40 },
+    { period: '2024', global: 74.50, namibia: 73.20 }
   ];
 
   const keyMarkets = [
-    { country: 'USA', demand: '24,500 tonnes', price: '$49.20' },
-    { country: 'China', demand: '18,200 tonnes', price: '$47.80' },
-    { country: 'France', demand: '8,900 tonnes', price: '$50.10' },
-    { country: 'Japan', demand: '6,400 tonnes', price: '$48.90' }
+    { 
+      country: 'United States', 
+      demand: '18,745 tonnes', 
+      price: '$74.80',
+      imports: '$156.8M (2022)',
+      description: 'World\'s largest uranium importer'
+    },
+    { 
+      country: 'China', 
+      demand: '12,000 tonnes', 
+      price: '$73.50',
+      imports: '$80.3K (2022)',
+      description: 'Rapidly expanding nuclear program'
+    },
+    { 
+      country: 'France', 
+      demand: '8,900 tonnes', 
+      price: '$75.10',
+      imports: '$40.8K (2022)',
+      description: '70% nuclear electricity generation'
+    },
+    { 
+      country: 'Japan', 
+      demand: '6,400 tonnes', 
+      price: '$74.20',
+      imports: 'Via trading companies',
+      description: 'Post-Fukushima recovery'
+    }
   ];
 
   return (
@@ -177,10 +203,16 @@ const MarketSection = () => {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {keyMarkets.map((market, index) => (
-                <div key={index} className="p-4 bg-muted/50 rounded-lg">
+                <div key={index} className="p-4 bg-muted/50 rounded-lg hover:bg-muted/70 transition-colors">
                   <h4 className="font-semibold text-foreground mb-2">{market.country}</h4>
                   <p className="text-sm text-muted-foreground mb-1">
-                    Demand: {market.demand}
+                    Annual Demand: {market.demand}
+                  </p>
+                  <p className="text-sm text-muted-foreground mb-1">
+                    Imports: {market.imports}
+                  </p>
+                  <p className="text-xs text-muted-foreground mb-2">
+                    {market.description}
                   </p>
                   <p className="text-lg font-bold text-primary">{market.price}</p>
                 </div>
