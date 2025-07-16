@@ -131,9 +131,13 @@ const InteractiveMap = () => {
   };
 
   useEffect(() => {
-    const savedToken = localStorage.getItem('mapbox_token');
+    // User provided token
+    const userToken = 'pk.eyJ1IjoibW9uZ3JvbzE2IiwiYSI6ImNtZDYwbnZqZDAzdG8yw3IweG5sdDhmdHcifQ.WJirXHFV_jNW4Hk71QP_Lw';
+    const savedToken = localStorage.getItem('mapbox_token') || userToken;
+    
     if (savedToken) {
       setMapboxToken(savedToken);
+      localStorage.setItem('mapbox_token', savedToken);
       initializeMap(savedToken);
     }
 
