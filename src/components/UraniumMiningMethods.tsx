@@ -6,6 +6,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Mountain, Droplets, Drill, Factory, Truck, Shield, TrendingUp, AlertTriangle } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import RemoteMiningTechnology from './RemoteMiningTechnology';
+import openPitImage from '@/assets/open-pit-mining.jpg';
+import islImage from '@/assets/isl-mining.jpg';
+import undergroundImage from '@/assets/underground-mining.jpg';
+import heapLeachImage from '@/assets/heap-leaching.jpg';
 
 interface MiningMethod {
   method_name: string;
@@ -202,6 +206,16 @@ const UraniumMiningMethods = () => {
     }
   };
 
+  const getMethodImage = (type: string) => {
+    switch (type) {
+      case 'open_pit': return openPitImage;
+      case 'isl': return islImage;
+      case 'underground': return undergroundImage;
+      case 'heap_leach': return heapLeachImage;
+      default: return openPitImage;
+    }
+  };
+
   const getMethodColor = (type: string) => {
     switch (type) {
       case 'open_pit': return 'text-orange-500';
@@ -329,6 +343,15 @@ const UraniumMiningMethods = () => {
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
+                      {/* Method Image */}
+                      <div className="w-full h-48 rounded-lg overflow-hidden">
+                        <img 
+                          src={getMethodImage(selectedMethodData.method_type)} 
+                          alt={`${selectedMethodData.method_name} visualization`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      
                       <p className="text-lg">{selectedMethodData.description}</p>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -1,5 +1,9 @@
 import React from 'react';
 import { Globe, MapPin, BookOpen, Mail, Phone, ExternalLink } from 'lucide-react';
+import unamLogo from '@/assets/unam-logo.jpg';
+import iumLogo from '@/assets/ium-logo.jpg';
+import ministryLogo from '@/assets/ministry-mines.jpg';
+import rosatomLogo from '@/assets/rosatom-logo.jpg';
 
 const Footer = () => {
   const quickLinks = [
@@ -17,10 +21,11 @@ const Footer = () => {
   ];
 
   const partners = [
-    { name: 'UNAM', href: '#' },
-    { name: 'Ministry of Mines', href: '#' },
-    { name: 'ROSATOM', href: '#' },
-    { name: 'World Nuclear Association', href: '#' },
+    { name: 'UNAM', href: 'https://www.unam.edu.na', image: unamLogo },
+    { name: 'IUM', href: 'https://www.ium.edu.na', image: iumLogo },
+    { name: 'Ministry of Mines', href: '#', image: ministryLogo },
+    { name: 'ROSATOM', href: '#', image: rosatomLogo },
+    { name: 'World Nuclear Association', href: '#', image: null },
   ];
 
   return (
@@ -31,8 +36,12 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-1 animate-fade-in-up">
             <div className="flex items-center space-x-3 mb-4 group">
-              <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center group-hover:animate-glow-pulse transition-all duration-300">
-                <Globe className="w-5 h-5 text-white group-hover:animate-rotate-slow" />
+              <div className="w-8 h-8 rounded-lg overflow-hidden group-hover:scale-110 transition-all duration-300">
+                <img 
+                  src="/lovable-uploads/b1844ada-b971-4110-baf6-1a9ac1b92bd1.png" 
+                  alt="Namibia Flag" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="text-xl font-bold">
                 Namibia <span className="text-uranium-green">Uranium</span> Portal
@@ -92,9 +101,18 @@ const Footer = () => {
           {/* Partners */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Partners</h3>
-            <ul className="space-y-2">
+            <div className="space-y-3">
               {partners.map((partner) => (
-                <li key={partner.name}>
+                <div key={partner.name} className="flex items-center space-x-3">
+                  {partner.image && (
+                    <div className="w-8 h-8 rounded overflow-hidden shrink-0">
+                      <img 
+                        src={partner.image} 
+                        alt={`${partner.name} logo`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
                   <a 
                     href={partner.href} 
                     className="text-white/80 hover:text-uranium-green transition-colors duration-200 flex items-center"
@@ -102,9 +120,9 @@ const Footer = () => {
                     {partner.name}
                     <ExternalLink className="w-3 h-3 ml-1" />
                   </a>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
 
@@ -130,10 +148,37 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Team Section */}
+        <div className="border-t border-white/20 pt-8 mb-8">
+          <h3 className="text-lg font-semibold mb-4 text-center">Geotech Hackers Team</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+            <div>
+              <div className="text-sm font-medium text-uranium-green">Meduletu Kamati</div>
+              <div className="text-xs text-white/70">Co-founder</div>
+              <div className="text-xs text-white/60">meduletu.kamati@gmail.com</div>
+            </div>
+            <div>
+              <div className="text-sm font-medium text-uranium-green">Rutendo Madenyika</div>
+              <div className="text-xs text-white/70">Co-founder</div>
+              <div className="text-xs text-white/60">missruru06@gmail.com</div>
+            </div>
+            <div>
+              <div className="text-sm font-medium text-uranium-green">Simaneka L.J Antindi</div>
+              <div className="text-xs text-white/70">Co-founder</div>
+              <div className="text-xs text-white/60">simaneka.an</div>
+            </div>
+            <div>
+              <div className="text-sm font-medium text-uranium-green">Erastus Katanga</div>
+              <div className="text-xs text-white/70">Co-founder</div>
+              <div className="text-xs text-white/60">gamefreak148d@gmail.com</div>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
         <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-white/70 text-sm mb-4 md:mb-0">
-            © 2024 Namibia Uranium Portal. All rights reserved. Built with ❤️ for education and awareness.
+            © 2024 Namibia Uranium Portal. All rights reserved. Built with ❤️ by Geotech Hackers.
           </div>
           <div className="flex space-x-6 text-sm">
             <a href="/privacy" className="text-white/70 hover:text-uranium-green transition-colors">

@@ -52,8 +52,12 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group transition-transform duration-300 hover:scale-105">
-            <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center group-hover:animate-glow-pulse transition-all duration-300">
-              <Globe className="w-5 h-5 text-white group-hover:animate-rotate-slow" />
+            <div className="w-8 h-8 rounded-lg overflow-hidden group-hover:scale-110 transition-all duration-300">
+              <img 
+                src="/lovable-uploads/b1844ada-b971-4110-baf6-1a9ac1b92bd1.png" 
+                alt="Namibia Flag" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="text-xl font-bold text-foreground">
               Namibia <span className="text-uranium">Uranium</span> Portal
