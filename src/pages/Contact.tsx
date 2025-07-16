@@ -11,27 +11,27 @@ const Contact = () => {
   const teamMembers = [
     {
       name: 'Meduletu Kamati',
-      role: 'Project Lead',
-      email: 'meduletu.kamati@namibiauranium.org',
-      specialization: 'Uranium Mining Operations'
+      role: 'Co-Founder',
+      email: 'meduletu.kamati@gmail.com',
+      Organisation: 'Geotech Hackers'
     },
     {
-      name: 'Rutendo',
-      role: 'Technical Advisor',
-      email: 'rutendo@namibiauranium.org',
-      specialization: 'Nuclear Technology'
+      name: 'Rutendo Madanyika',
+      role: 'Co-Founder',
+      email: 'missruru06@gmail.com',
+      Organisation: 'Geotech Hackers'
     },
     {
-      name: 'Erastus',
-      role: 'Research Coordinator',
-      email: 'erastus@namibiauranium.org',
-      specialization: 'Environmental Impact Assessment'
+      name: 'Erastus Katanga',
+      role: 'Co-Founder',
+      email: 'gamefreak148d@gmail.com',
+      Organisation: 'Geotech Hackers'
     },
     {
-      name: 'Simaneka',
-      role: 'Education Specialist',
-      email: 'simaneka@namibiauranium.org',
-      specialization: 'Educational Content Development'
+      name: 'Simaneka Anthindi',
+      role: 'Co-Founder',
+      email: 'simaneka.an.Anthindi@gmail.com',
+      Organisation: 'Geotech Hackers'
     }
   ];
 
@@ -110,7 +110,7 @@ const Contact = () => {
                       <Mail className="h-5 w-5 text-primary" />
                       <div>
                         <p className="font-medium">Email</p>
-                        <p className="text-muted-foreground">info@namibiauranium.org</p>
+                        <p className="text-muted-foreground">info@bytecode.com</p>
                       </div>
                     </div>
                     
@@ -118,7 +118,7 @@ const Contact = () => {
                       <Phone className="h-5 w-5 text-primary" />
                       <div>
                         <p className="font-medium">Phone</p>
-                        <p className="text-muted-foreground">+264 61 xxx xxxx</p>
+                        <p className="text-muted-foreground">+264 61 111 111 1</p>
                       </div>
                     </div>
                     
@@ -127,7 +127,7 @@ const Contact = () => {
                       <div>
                         <p className="font-medium">Address</p>
                         <p className="text-muted-foreground">
-                          University of Namibia<br />
+                          International University of Management<br />
                           Windhoek, Namibia
                         </p>
                       </div>
