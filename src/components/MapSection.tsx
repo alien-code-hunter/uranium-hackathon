@@ -7,7 +7,7 @@ const MapSection = () => {
   const mineLocations = [
     {
       name: 'Rössing Mine',
-      location: 'Erongo Region (-15.2969°S, 15.0947°E)',
+      location: 'Erongo Region (-22.6667°S, 14.5399°E)',
       type: 'Open Pit',
       production: '2,500 tonnes/year',
       status: 'Operating',
@@ -17,7 +17,7 @@ const MapSection = () => {
     },
     {
       name: 'Husab Mine', 
-      location: 'Erongo Region (-15.1500°S, 15.2000°E)',
+      location: 'Erongo Region (-22.5852°S, 15.0243°E)',
       type: 'Open Pit',
       production: '5,500 tonnes/year',
       status: 'Operating',
@@ -27,7 +27,7 @@ const MapSection = () => {
     },
     {
       name: 'Langer Heinrich',
-      location: 'Erongo Region (-15.4167°S, 15.0833°E)',
+      location: 'Erongo Region (-22.8145°S, 15.3250°E)',
       type: 'Open Pit',
       production: '1,350 tonnes/year',
       status: 'Care & Maintenance',

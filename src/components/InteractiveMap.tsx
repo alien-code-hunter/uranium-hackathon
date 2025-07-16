@@ -12,7 +12,7 @@ const InteractiveMap = () => {
   const mineLocations = [
     {
       name: 'Rössing Mine',
-      coordinates: [-15.2969, 15.0947] as [number, number],
+      coordinates: [-22.666740426808524, 14.539917429368373] as [number, number],
       location: 'Erongo Region',
       type: 'Open Pit',
       production: '2,500 tonnes/year',
@@ -23,7 +23,7 @@ const InteractiveMap = () => {
     },
     {
       name: 'Husab Mine',
-      coordinates: [-15.1500, 15.2000] as [number, number],
+      coordinates: [-22.585199605068304, 15.024287253079612] as [number, number],
       location: 'Erongo Region', 
       type: 'Open Pit',
       production: '5,500 tonnes/year',
@@ -34,7 +34,7 @@ const InteractiveMap = () => {
     },
     {
       name: 'Langer Heinrich',
-      coordinates: [-15.4167, 15.0833] as [number, number],
+      coordinates: [-22.814518422653478, 15.32503725439056] as [number, number],
       location: 'Erongo Region',
       type: 'Open Pit', 
       production: '1,350 tonnes/year',
@@ -68,7 +68,7 @@ const InteractiveMap = () => {
       return `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${mine.coordinates[0]},${mine.coordinates[1]}&zoom=12`;
     }
     // Default view of Namibia uranium mining region
-    return `https://www.google.com/maps/embed/v1/view?key=${apiKey}&center=-15.2,15.1&zoom=8`;
+    return `https://www.google.com/maps/embed/v1/view?key=${apiKey}&center=-22.6,15.0&zoom=8`;
   };
 
   const openInGoogleMaps = (mine: typeof mineLocations[0]) => {
