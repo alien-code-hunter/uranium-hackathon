@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation';
 import MapSection from '@/components/MapSection';
 import PlantOperations from '@/components/PlantOperations';
 import GeologySection from '@/components/GeologySection';
+import UraniumMiningMethods from '@/components/UraniumMiningMethods';
 import Footer from '@/components/Footer';
 
 const Mining = () => {
@@ -22,6 +23,7 @@ const Mining = () => {
         </section>
         <MapSection />
         <PlantOperations />
+        <UraniumMiningMethods />
         <GeologySection />
       </main>
       <Footer />

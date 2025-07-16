@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Mountain, Droplets, Drill, Factory, Truck, Shield, TrendingUp, AlertTriangle } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
+import RemoteMiningTechnology from './RemoteMiningTechnology';
 
 interface MiningMethod {
   method_name: string;

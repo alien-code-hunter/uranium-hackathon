@@ -5,6 +5,8 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { GamepadIcon, Brain, Target, Zap, Trophy, Star, RotateCcw, Shuffle, Play, Pause } from 'lucide-react';
+import ReactPlayer from 'react-player';
+import MiningGameSimulator from './MiningGameSimulator';
 import { supabase } from '@/integrations/supabase/client';
 
 interface QuizQuestion {
@@ -255,11 +257,12 @@ const AdvancedKidsGames = () => {
         </div>
 
         <Tabs defaultValue="quiz" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-8">
+          <TabsList className="grid w-full grid-cols-5 mb-8">
             <TabsTrigger value="quiz">Smart Quiz</TabsTrigger>
             <TabsTrigger value="mining">Mining Simulator</TabsTrigger>
             <TabsTrigger value="memory">Memory Game</TabsTrigger>
             <TabsTrigger value="puzzle">Uranium Puzzle</TabsTrigger>
+            <TabsTrigger value="video">Learning Videos</TabsTrigger>
           </TabsList>
 
           <TabsContent value="quiz">
@@ -409,50 +412,7 @@ const AdvancedKidsGames = () => {
           </TabsContent>
 
           <TabsContent value="mining">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {miningGameData.levels.map((level) => (
-                <Card key={level.id} className="bg-card/90 backdrop-blur-sm hover:bg-card/95 transition-all group">
-                  <CardHeader>
-                    <CardTitle className="text-lg flex items-center justify-between">
-                      {level.name}
-                      <Badge variant={
-                        level.difficulty === 'Easy' ? 'default' :
-                        level.difficulty === 'Medium' ? 'secondary' : 'destructive'
-                      }>
-                        {level.difficulty}
-                      </Badge>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-sm text-muted-foreground">{level.description}</p>
-                    
-                    <div className="space-y-2 text-sm">
-                      <div><strong>Target:</strong> {level.target} discoveries</div>
-                      <div><strong>Time Limit:</strong> {level.timeLimit} seconds</div>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-medium text-sm mb-2">Tools Available:</h4>
-                      <div className="flex flex-wrap gap-1">
-                        {level.tools.map((tool, index) => (
-                          <Badge key={index} variant="outline" className="text-xs">
-                            {tool}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-
-                    <Button 
-                      className="w-full group-hover:bg-primary/90" 
-                      onClick={() => startMiningGame(level.id)}
-                    >
-                      <Play className="h-4 w-4 mr-2" />
-                      Start Level {level.id}
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            <MiningGameSimulator />
           </TabsContent>
 
           <TabsContent value="memory">
@@ -487,6 +447,40 @@ const AdvancedKidsGames = () => {
                 </Button>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          <TabsContent value="video">
+            <div className="space-y-8">
+              <Card className="max-w-4xl mx-auto bg-card/90 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-center">Educational Videos</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="aspect-video">
+                    <ReactPlayer
+                      url="https://www.youtube.com/watch?v=rcOFV4y5z8c"
+                      width="100%"
+                      height="100%"
+                      controls={true}
+                      config={{
+                        youtube: {
+                          playerVars: {
+                            modestbranding: 1,
+                            rel: 0
+                          }
+                        }
+                      }}
+                    />
+                  </div>
+                  <div className="text-center">
+                    <h3 className="text-lg font-semibold mb-2">How Nuclear Energy Works</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Learn about nuclear energy in a fun and simple way!
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
         </Tabs>
       </div>
