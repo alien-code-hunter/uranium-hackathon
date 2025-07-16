@@ -1,33 +1,39 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { MapPin, Zap, Truck, Building2, ArrowRight } from 'lucide-react';
+import { MapPin, Zap, Truck, Building2 } from 'lucide-react';
+import InteractiveMap from './InteractiveMap';
 
 const MapSection = () => {
   const mineLocations = [
     {
       name: 'Rössing Mine',
-      location: 'Erongo Region',
+      location: 'Erongo Region (-15.2969°S, 15.0947°E)',
       type: 'Open Pit',
       production: '2,500 tonnes/year',
       status: 'Operating',
-      color: 'bg-uranium'
+      color: 'bg-uranium',
+      operator: 'Rio Tinto',
+      details: 'World\'s longest-running open-pit uranium mine'
     },
     {
-      name: 'Husab Mine',
-      location: 'Erongo Region',
+      name: 'Husab Mine', 
+      location: 'Erongo Region (-15.1500°S, 15.2000°E)',
       type: 'Open Pit',
       production: '5,500 tonnes/year',
       status: 'Operating',
-      color: 'bg-accent'
+      color: 'bg-accent',
+      operator: 'Swakop Uranium',
+      details: 'Namibia\'s largest uranium mine by production'
     },
     {
       name: 'Langer Heinrich',
-      location: 'Erongo Region',
+      location: 'Erongo Region (-15.4167°S, 15.0833°E)',
       type: 'Open Pit',
       production: '1,350 tonnes/year',
       status: 'Care & Maintenance',
-      color: 'bg-muted'
+      color: 'bg-muted',
+      operator: 'Paladin Energy',
+      details: 'Heap leach processing facility'
     }
   ];
 
@@ -36,36 +42,16 @@ const MapSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Interactive <span className="text-uranium">Mining Map</span>
+            <span className="text-uranium">Mining Map</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Explore Namibia's uranium deposits, operating mines, and infrastructure 
-            on our comprehensive interactive map platform.
+            on the map platform.
           </p>
         </div>
 
-        {/* Map Placeholder */}
-        <div className="bg-gradient-to-br from-earth-sand to-earth-brown/20 rounded-2xl h-96 md:h-[500px] mb-12 relative overflow-hidden border border-border">
-          <div className="absolute inset-0 bg-gradient-to-br from-transparent to-earth-brown/10"></div>
-          
-          {/* Namibia outline placeholder */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <MapPin className="w-16 h-16 text-uranium mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-foreground mb-2">Interactive Map Coming Soon</h3>
-              <p className="text-muted-foreground mb-6">Full GIS mapping with real-time mine data</p>
-              <Button variant="uranium">
-                Access Map Portal
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
-
-          {/* Mine markers simulation */}
-          <div className="absolute top-1/3 left-1/4 w-3 h-3 bg-uranium rounded-full animate-pulse"></div>
-          <div className="absolute top-2/5 left-1/3 w-3 h-3 bg-accent rounded-full animate-pulse"></div>
-          <div className="absolute top-1/2 left-1/4 w-3 h-3 bg-muted-foreground rounded-full animate-pulse"></div>
-        </div>
+        {/* Interactive Map */}
+        <InteractiveMap />
 
         {/* Mine Information Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
@@ -90,15 +76,24 @@ const MapSection = () => {
                   {mine.name}
                 </CardTitle>
                 <CardDescription className="text-muted-foreground">
-                  {mine.location} • {mine.type}
+                  {mine.location}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Annual Production:</span>
+                    <span className="text-muted-foreground">Production:</span>
                     <span className="font-medium text-foreground">{mine.production}</span>
                   </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Operator:</span>
+                    <span className="font-medium text-foreground">{mine.operator}</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Type:</span>
+                    <span className="font-medium text-foreground">{mine.type}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-2">{mine.details}</p>
                 </div>
               </CardContent>
             </Card>
