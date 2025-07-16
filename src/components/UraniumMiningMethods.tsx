@@ -27,6 +27,12 @@ const UraniumMiningMethods = () => {
     insertSampleMethods();
   }, []);
 
+  useEffect(() => {
+    if (miningMethods.length > 0 && !selectedMethod) {
+      setSelectedMethod(miningMethods[0].method_type);
+    }
+  }, [miningMethods, selectedMethod]);
+
   const loadMiningMethods = async () => {
     const { data } = await supabase
       .from('mining_methods')

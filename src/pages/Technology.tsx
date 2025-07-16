@@ -1,7 +1,6 @@
 import React from 'react';
 import Navigation from '@/components/Navigation';
-import AISection from '@/components/AISection';
-import WhatsLackingSection from '@/components/WhatsLackingSection';
+import TechnologyPage from '@/components/TechnologyPage';
 import Footer from '@/components/Footer';
 
 const Technology = () => {
@@ -9,18 +8,7 @@ const Technology = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <main>
-        <section className="py-20 bg-gradient-subtle">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Technology and AI in Uranium Mining & Nuclear Industry
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Advanced technologies, artificial intelligence applications, and areas for future development in uranium mining
-            </p>
-          </div>
-        </section>
-        <AISection />
-        <WhatsLackingSection />
+        <TechnologyPage />
       </main>
       <Footer />
     </div>

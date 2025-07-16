@@ -136,13 +136,13 @@ const Footer = () => {
             © 2024 Namibia Uranium Portal. All rights reserved. Built with ❤️ for education and awareness.
           </div>
           <div className="flex space-x-6 text-sm">
-            <a href="#" className="text-white/70 hover:text-uranium-green transition-colors">
+            <a href="/privacy" className="text-white/70 hover:text-uranium-green transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-white/70 hover:text-uranium-green transition-colors">
+            <a href="/terms" className="text-white/70 hover:text-uranium-green transition-colors">
               Terms of Use
             </a>
-            <a href="#" className="text-white/70 hover:text-uranium-green transition-colors">
+            <a href="/contact" className="text-white/70 hover:text-uranium-green transition-colors">
               Contact
             </a>
           </div>

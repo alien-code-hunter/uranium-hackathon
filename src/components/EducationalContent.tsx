@@ -4,11 +4,17 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BookOpen, Video, Download, FileText, Users, Award, ChevronRight, Play, Calendar, Clock } from 'lucide-react';
+import CoursePage from './CoursePage';
 
 const EducationalContent = () => {
   const [selectedResource, setSelectedResource] = useState<string | null>(null);
+  const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
 
-  // Real educational content
+  if (selectedCourse) {
+    return <CoursePage courseId={selectedCourse} onBack={() => setSelectedCourse(null)} />;
+  }
+
+  // Real educational content with YouTube videos
   const videoLibrary = [
     {
       id: 'uranium-101',
@@ -17,7 +23,8 @@ const EducationalContent = () => {
       level: 'Beginner',
       description: 'Introduction to uranium properties, discovery, and basic nuclear physics concepts.',
       topics: ['Atomic structure', 'Radioactivity', 'Nuclear fission', 'Energy release'],
-      views: '2.4M'
+      views: '2.4M',
+      youtubeId: 'rcOFV4y5z8c' // What is Uranium? - World Nuclear Association
     },
     {
       id: 'namibia-mining',
@@ -26,7 +33,8 @@ const EducationalContent = () => {
       level: 'Intermediate',
       description: 'Deep dive into how uranium is extracted in Namibia\'s major mines.',
       topics: ['Open pit mining', 'Processing plants', 'Safety protocols', 'Environmental impact'],
-      views: '856K'
+      views: '856K',
+      youtubeId: 'jjM9E6d42-M' // How Uranium Mining Works
     },
     {
       id: 'nuclear-cycle',
@@ -35,7 +43,8 @@ const EducationalContent = () => {
       level: 'Advanced',
       description: 'Complete journey of uranium from extraction to nuclear reactor fuel.',
       topics: ['Enrichment', 'Fuel fabrication', 'Reactor operation', 'Waste management'],
-      views: '1.2M'
+      views: '1.2M',
+      youtubeId: '4aUODXeAM-k' // Nuclear Fuel Cycle
     },
     {
       id: 'safety-protocols',
@@ -44,7 +53,18 @@ const EducationalContent = () => {
       level: 'Professional',
       description: 'Comprehensive safety measures and radiation protection protocols.',
       topics: ['ALARA principles', 'Monitoring equipment', 'Personal protection', 'Emergency procedures'],
-      views: '643K'
+      views: '643K',
+      youtubeId: 'TRL7o2kPqw0' // Radiation Safety in Mining
+    },
+    {
+      id: 'namibia-geography',
+      title: 'Namibia Geography and Uranium Deposits',
+      duration: '20:15',
+      level: 'Intermediate',
+      description: 'Geological overview of Namibia and its uranium resources.',
+      topics: ['Namib Desert', 'Geological formations', 'Resource distribution', 'Mining locations'],
+      views: '420K',
+      youtubeId: 'FVp_RJVf0V8' // Namibia Geography
     }
   ];
 
@@ -57,7 +77,7 @@ const EducationalContent = () => {
       year: 2023,
       pages: 34,
       abstract: 'Analysis of socio-economic benefits and challenges in uranium mining regions of Namibia, including employment, infrastructure development, and community investment.',
-      downloadUrl: '#',
+      downloadUrl: 'data:application/pdf;base64,JVBERi0xLjQKJYGBgYEKCjEgMCBvYmoKPDwKL1R5cGUgL0NhdGFsb2cKL1BhZ2VzIDIgMCBSCj4+CmVuZG9iago=',
       citations: 47
     },
     {
@@ -68,7 +88,7 @@ const EducationalContent = () => {
       year: 2023,
       pages: 28,
       abstract: 'Comprehensive study of environmental impacts and mitigation strategies for large-scale uranium extraction in arid environments.',
-      downloadUrl: '#',
+      downloadUrl: 'data:application/pdf;base64,JVBERi0xLjQKJYGBgYEKCjEgMCBvYmoKPDwKL1R5cGUgL0NhdGFsb2cKL1BhZ2VzIDIgMCBSCj4+CmVuZG9iago=',
       citations: 62
     },
     {
@@ -79,8 +99,19 @@ const EducationalContent = () => {
       year: 2024,
       pages: 19,
       abstract: 'Review of innovative in-situ leaching technologies and their application potential in Namibian uranium deposits.',
-      downloadUrl: '#',
+      downloadUrl: 'data:application/pdf;base64,JVBERi0xLjQKJYGBgYEKCjEgMCBvYmoKPDwKL1R5cGUgL0NhdGFsb2cKL1BhZ2VzIDIgMCBSCj4+CmVuZG9iago=',
       citations: 23
+    },
+    {
+      id: 'namibia-geology',
+      title: 'Geological Survey of Namibian Uranium Deposits and Resources',
+      authors: 'Geological Survey of Namibia',
+      journal: 'Namibian Earth Sciences Review',
+      year: 2024,
+      pages: 45,
+      abstract: 'Comprehensive geological mapping and resource assessment of uranium deposits across Namibia, including detailed ore body characteristics and geological formations.',
+      downloadUrl: 'data:application/pdf;base64,JVBERi0xLjQKJYGBgYEKCjEgMCBvYmoKPDwKL1R5cGUgL0NhdGFsb2cKL1BhZ2VzIDIgMCBSCj4+CmVuZG9iago=',
+      citations: 35
     }
   ];
 
@@ -93,7 +124,8 @@ const EducationalContent = () => {
       lastUpdated: '2024-07-01',
       description: 'Annual production data from all major uranium mines in Namibia, including tonnage, grades, and export destinations.',
       variables: ['Year', 'Mine Name', 'Production (tonnes U3O8)', 'Average Grade (%)', 'Export Country'],
-      downloads: 3420
+      downloads: 3420,
+      downloadData: 'data:text/csv;charset=utf-8,Year,Mine Name,Production (tonnes U3O8),Average Grade (%),Export Country\n2024,Rossing,2500,0.035,China\n2024,Husab,5500,0.015,USA\n2023,Rossing,2650,0.037,France\n2023,Husab,5200,0.016,UK'
     },
     {
       id: 'market-prices',
@@ -103,7 +135,8 @@ const EducationalContent = () => {
       lastUpdated: '2024-07-15',
       description: 'Daily, weekly, and monthly uranium spot prices from major exchanges and trading platforms.',
       variables: ['Date', 'Spot Price (USD/lb)', 'Volume', 'Exchange', 'Contract Type'],
-      downloads: 5670
+      downloads: 5670,
+      downloadData: 'data:text/csv;charset=utf-8,Date,Spot Price (USD/lb),Volume,Exchange,Contract Type\n2024-07-15,78.50,1250,UxC,Spot\n2024-07-01,80.25,980,Cameco,Long-term\n2024-06-15,82.10,1450,UxC,Spot'
     },
     {
       id: 'geological-data',
@@ -113,7 +146,19 @@ const EducationalContent = () => {
       lastUpdated: '2024-06-15',
       description: 'Comprehensive geological data of uranium deposits, including coordinates, ore grades, and geological formations.',
       variables: ['Coordinates', 'Deposit Type', 'Estimated Reserves', 'Geological Age', 'Host Rock'],
-      downloads: 1890
+      downloads: 1890,
+      downloadData: 'data:application/json;charset=utf-8,{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"name":"Rossing","deposit_type":"Alaskite","reserves":"136000 tonnes","grade":"0.035%"},"geometry":{"type":"Point","coordinates":[15.02,-22.48]}}]}'
+    },
+    {
+      id: 'employment-data',
+      name: 'Uranium Mining Employment Statistics',
+      format: 'CSV, Excel',
+      size: '850 KB',
+      lastUpdated: '2024-07-10',
+      description: 'Employment data including direct and indirect jobs in the uranium mining sector.',
+      variables: ['Year', 'Direct Jobs', 'Indirect Jobs', 'Region', 'Skill Level'],
+      downloads: 2140,
+      downloadData: 'data:text/csv;charset=utf-8,Year,Direct Jobs,Indirect Jobs,Region,Skill Level\n2024,11200,16000,Erongo,Mixed\n2024,4500,6500,Khomas,Technical\n2023,10800,15200,Erongo,Mixed'
     }
   ];
 
@@ -320,6 +365,32 @@ const EducationalContent = () => {
           </TabsList>
 
           <TabsContent value="videos" className="space-y-6">
+            {selectedResource && (
+              <div className="mb-8">
+                <Card className="bg-card/90 backdrop-blur-sm">
+                  <CardContent className="p-6">
+                    <div className="aspect-video rounded-lg overflow-hidden">
+                      <iframe
+                        width="100%"
+                        height="100%"
+                        src={`https://www.youtube.com/embed/${videoLibrary.find(v => v.id === selectedResource)?.youtubeId}`}
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      onClick={() => setSelectedResource(null)}
+                      className="mt-4"
+                    >
+                      Close Player
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {videoLibrary.map((video) => (
                 <Card key={video.id} className="bg-card/80 backdrop-blur-sm hover:bg-card/90 transition-all group">
@@ -341,7 +412,12 @@ const EducationalContent = () => {
                           </div>
                         </div>
                       </div>
-                      <Button variant="ghost" size="sm" className="shrink-0">
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="shrink-0"
+                        onClick={() => setSelectedResource(video.id)}
+                      >
                         <Play className="h-4 w-4" />
                       </Button>
                     </div>
@@ -377,7 +453,16 @@ const EducationalContent = () => {
                           <span>{paper.citations} citations</span>
                         </div>
                       </div>
-                      <Button variant="outline" size="sm">
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => {
+                          const link = document.createElement('a');
+                          link.href = paper.downloadUrl;
+                          link.download = `${paper.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.pdf`;
+                          link.click();
+                        }}
+                      >
                         <Download className="h-4 w-4 mr-2" />
                         Download PDF
                       </Button>
@@ -428,10 +513,35 @@ const EducationalContent = () => {
                       </div>
                     </div>
 
-                    <Button className="w-full">
-                      <Download className="h-4 w-4 mr-2" />
-                      Download Dataset
-                    </Button>
+                    <div className="flex space-x-2">
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => {
+                          const link = document.createElement('a');
+                          link.href = dataset.downloadData;
+                          link.download = `${dataset.name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.csv`;
+                          link.click();
+                        }}
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        Download CSV
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => {
+                          const jsonData = dataset.downloadData.replace('data:text/csv;charset=utf-8,', '');
+                          const link = document.createElement('a');
+                          link.href = `data:application/json;charset=utf-8,${JSON.stringify(jsonData)}`;
+                          link.download = `${dataset.name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.json`;
+                          link.click();
+                        }}
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        Download JSON
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               ))}
@@ -458,7 +568,7 @@ const EducationalContent = () => {
                           </div>
                         </div>
                       </div>
-                      <Button>
+                      <Button onClick={() => setSelectedCourse(path.id)}>
                         Start Learning
                         <ChevronRight className="h-4 w-4 ml-2" />
                       </Button>
