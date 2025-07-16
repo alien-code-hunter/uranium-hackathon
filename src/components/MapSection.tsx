@@ -40,17 +40,8 @@ const MapSection = () => {
   return (
     <section id="map" className="py-20 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            <span className="text-uranium">Mining Map</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Explore Namibia's uranium deposits, operating mines, and infrastructure 
-            on the map platform.
-          </p>
-        </div>
-
-        {/* Interactive Map */}
+        
+      {/* Interactive Map */}
         <InteractiveMap />
 
         {/* Mine Information Cards */}

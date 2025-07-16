@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,6 +10,32 @@ import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, MapPin, User } from 'lucide-react';
 
 const Contact = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!formRef.current) return;
+
+    emailjs
+      .sendForm(
+        'service_uv2a1x9',
+        'template_7v0b6ns',
+        formRef.current,
+        'xw2Vgq0q0s7Y2QVWy'
+      )
+      .then(
+        () => {
+          alert('✅ Message sent successfully!');
+          formRef.current?.reset();
+        },
+        (error) => {
+          alert('❌ Failed to send message.');
+          console.error(error);
+        }
+      );
+  };
+
   const teamMembers = [
     {
       name: 'Meduletu Kamati',
@@ -45,7 +73,7 @@ const Contact = () => {
               Contact Us
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Get in touch with our team of experts for questions about uranium mining, 
+              Get in touch with our team of experts for questions about uranium mining,
               educational content, or collaboration opportunities.
             </p>
           </div>
@@ -60,36 +88,37 @@ const Contact = () => {
                   <CardTitle className="text-2xl">Send us a Message</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <form className="space-y-6">
+                  <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium mb-2">First Name</label>
-                        <Input placeholder="Your first name" />
+                        <Input name="firstName" placeholder="Your first name" />
                       </div>
                       <div>
                         <label className="block text-sm font-medium mb-2">Last Name</label>
-                        <Input placeholder="Your last name" />
+                        <Input name="lastName" placeholder="Your last name" />
                       </div>
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-medium mb-2">Email</label>
-                      <Input type="email" placeholder="your.email@example.com" />
+                      <Input name="email" type="email" placeholder="your.email@example.com" />
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-medium mb-2">Subject</label>
-                      <Input placeholder="What is this regarding?" />
+                      <Input name="subject" placeholder="What is this regarding?" />
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-medium mb-2">Message</label>
-                      <Textarea 
+                      <Textarea
+                        name="message"
                         placeholder="Tell us more about your inquiry..."
                         className="min-h-[120px]"
                       />
                     </div>
-                    
+
                     <Button type="submit" className="w-full">
                       <Mail className="h-4 w-4 mr-2" />
                       Send Message
@@ -113,7 +142,7 @@ const Contact = () => {
                         <p className="text-muted-foreground">info@bytecode.com</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-3">
                       <Phone className="h-5 w-5 text-primary" />
                       <div>
@@ -121,7 +150,7 @@ const Contact = () => {
                         <p className="text-muted-foreground">+264 61 111 111 1</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-3">
                       <MapPin className="h-5 w-5 text-primary" />
                       <div>
@@ -149,7 +178,7 @@ const Contact = () => {
                             <div>
                               <h4 className="font-semibold">{member.name}</h4>
                               <p className="text-sm text-primary">{member.role}</p>
-                              <p className="text-sm text-muted-foreground">{member.specialization}</p>
+                              <p className="text-sm text-muted-foreground">{member.Organisation}</p>
                               <p className="text-sm text-muted-foreground">{member.email}</p>
                             </div>
                           </div>

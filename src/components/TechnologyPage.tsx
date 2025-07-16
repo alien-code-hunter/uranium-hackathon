@@ -161,10 +161,7 @@ const TechnologyPage = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Advanced technologies, artificial intelligence applications, and areas for future development in uranium mining
           </p>
-          <Button onClick={generateStrategyReport} size="lg">
-            <Download className="h-5 w-5 mr-2" />
-            Download Full Strategy Report
-          </Button>
+          
         </div>
       </section>
 

@@ -562,17 +562,7 @@ const UraniumMiningMethods = () => {
         </Tabs>
 
         {/* Call to Action */}
-        <div className="mt-16 text-center bg-gradient-hero rounded-2xl p-8">
-          <h3 className="text-2xl font-bold text-white mb-4">
-            Explore Advanced Mining Technologies
-          </h3>
-          <p className="text-white/90 mb-6 max-w-2xl mx-auto">
-            Learn about cutting-edge uranium extraction techniques and their applications in Namibian mining operations.
-          </p>
-          <Button variant="secondary" className="bg-white text-uranium hover:bg-white/90">
-            Discover Mining Innovations
-          </Button>
-        </div>
+        
       </div>
     </section>
   );

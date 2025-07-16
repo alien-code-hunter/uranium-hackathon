@@ -258,33 +258,36 @@ const ComparisonSection = () => {
         </Tabs>
 
         {/* Uranium Advantage Section */}
-        <Card className="bg-gradient-primary text-primary-foreground">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-2xl">
-              <Zap className="h-6 w-6" />
-              Why Uranium Matters for Namibia
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <DollarSign className="h-12 w-12 mx-auto mb-3 opacity-80" />
-                <h3 className="font-bold mb-2">Economic Impact</h3>
-                <p className="opacity-90">$254M export value with highest growth potential among all minerals</p>
-              </div>
-              <div className="text-center">
-                <Pickaxe className="h-12 w-12 mx-auto mb-3 opacity-80" />
-                <h3 className="font-bold mb-2">Job Creation</h3>
-                <p className="opacity-90">8,500+ direct jobs with lowest environmental impact compared to gold/diamond mining</p>
-              </div>
-              <div className="text-center">
-                <Leaf className="h-12 w-12 mx-auto mb-3 opacity-80" />
-                <h3 className="font-bold mb-2">Clean Energy Future</h3>
-                <p className="opacity-90">Essential for nuclear power, supporting global carbon neutrality goals</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+{/* Uranium Advantage Section */}
+<Card className="bg-gradient-primary text-black">
+  <CardHeader>
+    <CardTitle className="flex items-center gap-2 text-2xl">
+      <Zap className="h-6 w-6 text-yellow-400" /> {/* Yellow lightning bolt */}
+      Why Uranium Matters for Namibia
+    </CardTitle>
+  </CardHeader>
+  <CardContent>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="text-center">
+        <DollarSign className="h-12 w-12 mx-auto mb-3 text-green-500" /> {/* Green dollar sign */}
+        <h3 className="font-bold mb-2">Economic Impact</h3>
+        <p className="opacity-90">$254M export value with highest growth potential among all minerals</p>
+      </div>
+      <div className="text-center">
+        <Pickaxe className="h-12 w-12 mx-auto mb-3 text-red-500" /> {/* Red pickaxe */}
+        <h3 className="font-bold mb-2">Job Creation</h3>
+        <p className="opacity-90">8,500+ direct jobs with lowest environmental impact compared to gold/diamond mining</p>
+      </div>
+      <div className="text-center">
+        <Leaf className="h-12 w-12 mx-auto mb-3 text-emerald-500" /> {/* Emerald green leaf */}
+        <h3 className="font-bold mb-2">Clean Energy Future</h3>
+        <p className="opacity-90">Essential for nuclear power, supporting global carbon neutrality goals</p>
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
+
       </div>
     </section>
   );

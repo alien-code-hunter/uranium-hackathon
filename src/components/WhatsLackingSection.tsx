@@ -427,14 +427,7 @@ const WhatsLackingSection = () => {
               ))}
             </div>
             
-            <div className="mt-8 text-center">
-              <Button size="lg" className="mr-4">
-                Download Full Strategy Report
-              </Button>
-              <Button variant="outline" size="lg">
-                Contact Policy Makers
-              </Button>
-            </div>
+            
           </CardContent>
         </Card>
       </div>

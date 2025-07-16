@@ -76,17 +76,16 @@ const HeroSection = () => {
       </div>
 
       {/* Video Modal */}
-      {showVideo && (
-        <VideoPlayer 
-          url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
-          title="Introduction to Uranium Mining in Namibia" 
-          description="Discover Namibia's role as a leading uranium producer and the technology behind modern mining operations." 
-          onClose={() => setShowVideo(false)} 
-          autoPlay={true}
-          showMultipleVideos={true}
-        />
-      )}
-
+{showVideo && (
+  <VideoPlayer 
+    url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
+    title="Introduction to Uranium Mining in Namibia" 
+    description="Discover Namibia's role as a leading uranium producer and the technology behind modern mining operations." 
+    onClose={() => setShowVideo(false)} 
+    autoPlay={true}
+    showMultipleVideos={true}
+  />
+)}
       {/* Interactive Map Modal */}
       {showMap && <div className="fixed inset-0 bg-black/90 z-50 overflow-y-auto">
           <div className="min-h-screen p-4">
