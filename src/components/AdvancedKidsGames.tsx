@@ -457,19 +457,15 @@ const AdvancedKidsGames = () => {
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="aspect-video">
-                    <ReactPlayer
-                      url="https://www.youtube.com/watch?v=rcOFV4y5z8c"
+                    <iframe
                       width="100%"
                       height="100%"
-                      controls={true}
-                      config={{
-                        youtube: {
-                          playerVars: {
-                            modestbranding: 1,
-                            rel: 0
-                          }
-                        }
-                      }}
+                      src="https://www.youtube.com/embed/rcOFV4y5z8c"
+                      title="How Nuclear Energy Works"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="rounded-lg"
                     />
                   </div>
                   <div className="text-center">
