@@ -2,8 +2,9 @@ import React from 'react';
 import Navigation from '@/components/Navigation';
 import EducationSection from '@/components/EducationSection';
 import EducationalContent from '@/components/EducationalContent';
-import KidsSection from '@/components/KidsSection';
-import KidsLearning from '@/components/KidsLearning';
+import UraniumMiningMethods from '@/components/UraniumMiningMethods';
+import HealthcareBenefits from '@/components/HealthcareBenefits';
+import NuclearAnniversary from '@/components/NuclearAnniversary';
 import Footer from '@/components/Footer';
 
 const Education = () => {
@@ -23,6 +24,9 @@ const Education = () => {
         </section>
         <EducationSection />
         <EducationalContent />
+        <UraniumMiningMethods />
+        <HealthcareBenefits />
+        <NuclearAnniversary />
       </main>
       <Footer />
     </div>

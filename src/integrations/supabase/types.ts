@@ -44,6 +44,154 @@ export type Database = {
         }
         Relationships: []
       }
+      educational_videos: {
+        Row: {
+          created_at: string
+          description: string | null
+          difficulty_level: string | null
+          duration: string | null
+          id: string
+          thumbnail_url: string | null
+          title: string
+          topics: string[] | null
+          updated_at: string
+          video_url: string | null
+          views_count: number | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          difficulty_level?: string | null
+          duration?: string | null
+          id?: string
+          thumbnail_url?: string | null
+          title: string
+          topics?: string[] | null
+          updated_at?: string
+          video_url?: string | null
+          views_count?: number | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          difficulty_level?: string | null
+          duration?: string | null
+          id?: string
+          thumbnail_url?: string | null
+          title?: string
+          topics?: string[] | null
+          updated_at?: string
+          video_url?: string | null
+          views_count?: number | null
+        }
+        Relationships: []
+      }
+      employment_data: {
+        Row: {
+          created_at: string
+          employment_type: string
+          id: string
+          job_category: string | null
+          job_count: number | null
+          location_id: string | null
+          reporting_period: string | null
+          salary_range: string | null
+          skill_level: string | null
+          training_programs: string[] | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          employment_type: string
+          id?: string
+          job_category?: string | null
+          job_count?: number | null
+          location_id?: string | null
+          reporting_period?: string | null
+          salary_range?: string | null
+          skill_level?: string | null
+          training_programs?: string[] | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          employment_type?: string
+          id?: string
+          job_category?: string | null
+          job_count?: number | null
+          location_id?: string | null
+          reporting_period?: string | null
+          salary_range?: string | null
+          skill_level?: string | null
+          training_programs?: string[] | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "employment_data_location_id_fkey"
+            columns: ["location_id"]
+            isOneToOne: false
+            referencedRelation: "mining_locations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      environmental_studies: {
+        Row: {
+          compliance_status: string | null
+          created_at: string
+          findings: string | null
+          id: string
+          location_id: string | null
+          mitigation_measures: string[] | null
+          monitoring_parameters: Json | null
+          recommendations: string[] | null
+          report_url: string | null
+          study_date: string | null
+          study_title: string
+          study_type: string
+          updated_at: string
+        }
+        Insert: {
+          compliance_status?: string | null
+          created_at?: string
+          findings?: string | null
+          id?: string
+          location_id?: string | null
+          mitigation_measures?: string[] | null
+          monitoring_parameters?: Json | null
+          recommendations?: string[] | null
+          report_url?: string | null
+          study_date?: string | null
+          study_title: string
+          study_type: string
+          updated_at?: string
+        }
+        Update: {
+          compliance_status?: string | null
+          created_at?: string
+          findings?: string | null
+          id?: string
+          location_id?: string | null
+          mitigation_measures?: string[] | null
+          monitoring_parameters?: Json | null
+          recommendations?: string[] | null
+          report_url?: string | null
+          study_date?: string | null
+          study_title?: string
+          study_type?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "environmental_studies_location_id_fkey"
+            columns: ["location_id"]
+            isOneToOne: false
+            referencedRelation: "mining_locations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       faq_entries: {
         Row: {
           answer: string
@@ -184,6 +332,428 @@ export type Database = {
           url?: string
         }
         Relationships: []
+      }
+      iaea_classifications: {
+        Row: {
+          category: string
+          classification_type: string
+          compliance_requirements: string[] | null
+          created_at: string
+          criteria: Json | null
+          description: string | null
+          documentation_url: string | null
+          id: string
+          standards: string | null
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          classification_type: string
+          compliance_requirements?: string[] | null
+          created_at?: string
+          criteria?: Json | null
+          description?: string | null
+          documentation_url?: string | null
+          id?: string
+          standards?: string | null
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          classification_type?: string
+          compliance_requirements?: string[] | null
+          created_at?: string
+          criteria?: Json | null
+          description?: string | null
+          documentation_url?: string | null
+          id?: string
+          standards?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      market_predictions: {
+        Row: {
+          actual_value: number | null
+          commodity: string | null
+          confidence_level: string | null
+          created_at: string
+          id: string
+          key_factors: string[] | null
+          methodology: string | null
+          predicted_value: number | null
+          prediction_date: string | null
+          prediction_type: string
+          target_date: string | null
+          timeframe: string | null
+          unit: string | null
+          updated_at: string
+        }
+        Insert: {
+          actual_value?: number | null
+          commodity?: string | null
+          confidence_level?: string | null
+          created_at?: string
+          id?: string
+          key_factors?: string[] | null
+          methodology?: string | null
+          predicted_value?: number | null
+          prediction_date?: string | null
+          prediction_type: string
+          target_date?: string | null
+          timeframe?: string | null
+          unit?: string | null
+          updated_at?: string
+        }
+        Update: {
+          actual_value?: number | null
+          commodity?: string | null
+          confidence_level?: string | null
+          created_at?: string
+          id?: string
+          key_factors?: string[] | null
+          methodology?: string | null
+          predicted_value?: number | null
+          prediction_date?: string | null
+          prediction_type?: string
+          target_date?: string | null
+          timeframe?: string | null
+          unit?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      mining_locations: {
+        Row: {
+          created_at: string
+          description: string | null
+          environmental_data: Json | null
+          id: string
+          latitude: number | null
+          location_type: string
+          longitude: number | null
+          mining_method: string | null
+          name: string
+          operational_status: string | null
+          production_capacity: string | null
+          region: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          environmental_data?: Json | null
+          id?: string
+          latitude?: number | null
+          location_type: string
+          longitude?: number | null
+          mining_method?: string | null
+          name: string
+          operational_status?: string | null
+          production_capacity?: string | null
+          region?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          environmental_data?: Json | null
+          id?: string
+          latitude?: number | null
+          location_type?: string
+          longitude?: number | null
+          mining_method?: string | null
+          name?: string
+          operational_status?: string | null
+          production_capacity?: string | null
+          region?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      mining_methods: {
+        Row: {
+          advantages: string[] | null
+          case_studies: string[] | null
+          cost_factors: Json | null
+          created_at: string
+          description: string | null
+          disadvantages: string[] | null
+          environmental_impact: string | null
+          id: string
+          method_name: string
+          method_type: string
+          suitable_deposits: string[] | null
+          updated_at: string
+        }
+        Insert: {
+          advantages?: string[] | null
+          case_studies?: string[] | null
+          cost_factors?: Json | null
+          created_at?: string
+          description?: string | null
+          disadvantages?: string[] | null
+          environmental_impact?: string | null
+          id?: string
+          method_name: string
+          method_type: string
+          suitable_deposits?: string[] | null
+          updated_at?: string
+        }
+        Update: {
+          advantages?: string[] | null
+          case_studies?: string[] | null
+          cost_factors?: Json | null
+          created_at?: string
+          description?: string | null
+          disadvantages?: string[] | null
+          environmental_impact?: string | null
+          id?: string
+          method_name?: string
+          method_type?: string
+          suitable_deposits?: string[] | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      news_updates: {
+        Row: {
+          author: string | null
+          category: string
+          content: string | null
+          created_at: string
+          external_url: string | null
+          id: string
+          image_url: string | null
+          importance_level: string | null
+          publication_date: string | null
+          source: string | null
+          tags: string[] | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author?: string | null
+          category: string
+          content?: string | null
+          created_at?: string
+          external_url?: string | null
+          id?: string
+          image_url?: string | null
+          importance_level?: string | null
+          publication_date?: string | null
+          source?: string | null
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author?: string | null
+          category?: string
+          content?: string | null
+          created_at?: string
+          external_url?: string | null
+          id?: string
+          image_url?: string | null
+          importance_level?: string | null
+          publication_date?: string | null
+          source?: string | null
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      nuclear_anniversary: {
+        Row: {
+          achievements: string[] | null
+          country: string | null
+          created_at: string
+          description: string | null
+          historical_context: string | null
+          id: string
+          images: string[] | null
+          impact_areas: string[] | null
+          key_figures: string[] | null
+          milestone_title: string
+          milestone_year: number
+          significance: string | null
+          updated_at: string
+        }
+        Insert: {
+          achievements?: string[] | null
+          country?: string | null
+          created_at?: string
+          description?: string | null
+          historical_context?: string | null
+          id?: string
+          images?: string[] | null
+          impact_areas?: string[] | null
+          key_figures?: string[] | null
+          milestone_title: string
+          milestone_year: number
+          significance?: string | null
+          updated_at?: string
+        }
+        Update: {
+          achievements?: string[] | null
+          country?: string | null
+          created_at?: string
+          description?: string | null
+          historical_context?: string | null
+          id?: string
+          images?: string[] | null
+          impact_areas?: string[] | null
+          key_figures?: string[] | null
+          milestone_title?: string
+          milestone_year?: number
+          significance?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      nuclear_plant_requirements: {
+        Row: {
+          availability: string | null
+          component_category: string
+          component_name: string
+          component_type: string | null
+          cost_estimate: string | null
+          created_at: string
+          id: string
+          quality_standards: string[] | null
+          specifications: Json | null
+          strategic_importance: string | null
+          suppliers: string[] | null
+          updated_at: string
+        }
+        Insert: {
+          availability?: string | null
+          component_category: string
+          component_name: string
+          component_type?: string | null
+          cost_estimate?: string | null
+          created_at?: string
+          id?: string
+          quality_standards?: string[] | null
+          specifications?: Json | null
+          strategic_importance?: string | null
+          suppliers?: string[] | null
+          updated_at?: string
+        }
+        Update: {
+          availability?: string | null
+          component_category?: string
+          component_name?: string
+          component_type?: string | null
+          cost_estimate?: string | null
+          created_at?: string
+          id?: string
+          quality_standards?: string[] | null
+          specifications?: Json | null
+          strategic_importance?: string | null
+          suppliers?: string[] | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      quiz_questions: {
+        Row: {
+          age_group: string | null
+          category: string | null
+          correct_answer: number
+          created_at: string
+          difficulty_level: string | null
+          explanation: string | null
+          id: string
+          options: string[]
+          points: number | null
+          question_text: string
+          updated_at: string
+        }
+        Insert: {
+          age_group?: string | null
+          category?: string | null
+          correct_answer: number
+          created_at?: string
+          difficulty_level?: string | null
+          explanation?: string | null
+          id?: string
+          options: string[]
+          points?: number | null
+          question_text: string
+          updated_at?: string
+        }
+        Update: {
+          age_group?: string | null
+          category?: string | null
+          correct_answer?: number
+          created_at?: string
+          difficulty_level?: string | null
+          explanation?: string | null
+          id?: string
+          options?: string[]
+          points?: number | null
+          question_text?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      risk_assessments: {
+        Row: {
+          assessment_date: string | null
+          assessment_type: string
+          created_at: string
+          id: string
+          impact_severity: string | null
+          location_id: string | null
+          mitigation_strategies: string[] | null
+          monitoring_requirements: string[] | null
+          next_review_date: string | null
+          probability: string | null
+          risk_category: string
+          risk_description: string | null
+          updated_at: string
+        }
+        Insert: {
+          assessment_date?: string | null
+          assessment_type: string
+          created_at?: string
+          id?: string
+          impact_severity?: string | null
+          location_id?: string | null
+          mitigation_strategies?: string[] | null
+          monitoring_requirements?: string[] | null
+          next_review_date?: string | null
+          probability?: string | null
+          risk_category: string
+          risk_description?: string | null
+          updated_at?: string
+        }
+        Update: {
+          assessment_date?: string | null
+          assessment_type?: string
+          created_at?: string
+          id?: string
+          impact_severity?: string | null
+          location_id?: string | null
+          mitigation_strategies?: string[] | null
+          monitoring_requirements?: string[] | null
+          next_review_date?: string | null
+          probability?: string | null
+          risk_category?: string
+          risk_description?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "risk_assessments_location_id_fkey"
+            columns: ["location_id"]
+            isOneToOne: false
+            referencedRelation: "mining_locations"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       statistics: {
         Row: {

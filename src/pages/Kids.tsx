@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from '@/components/Navigation';
 import KidsSection from '@/components/KidsSection';
 import KidsLearning from '@/components/KidsLearning';
+import AdvancedKidsGames from '@/components/AdvancedKidsGames';
 import Footer from '@/components/Footer';
 
 const Kids = () => {
@@ -21,6 +22,7 @@ const Kids = () => {
         </section>
         <KidsSection />
         <KidsLearning />
+        <AdvancedKidsGames />
       </main>
       <Footer />
     </div>

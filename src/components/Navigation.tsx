@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Globe, BookOpen, MapPin, BarChart3, Shield, Cpu, Scale, Baby } from 'lucide-react';
+import { Menu, X, Globe, BookOpen, MapPin, BarChart3, Shield, Cpu, Scale, Baby, Database, TrendingUp } from 'lucide-react';
+import SearchBar from '@/components/SearchBar';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +17,8 @@ const Navigation = () => {
     { name: 'Technology', href: '/technology', icon: Cpu },
     { name: 'Legal', href: '/legal', icon: Scale },
     { name: 'Kids', href: '/kids', icon: Baby },
+    { name: 'Dashboards', href: '/dashboards', icon: Database },
+    { name: 'Updates', href: '/updates', icon: TrendingUp },
   ];
 
   return (
@@ -33,7 +36,7 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.href;
@@ -41,13 +44,13 @@ const Navigation = () => {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`flex items-center space-x-2 transition-colors duration-200 ${
+                  className={`flex items-center space-x-1 transition-colors duration-200 text-sm ${
                     isActive 
                       ? 'text-uranium font-medium' 
                       : 'text-muted-foreground hover:text-uranium'
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-3 h-3" />
                   <span>{item.name}</span>
                 </Link>
               );
@@ -55,6 +58,11 @@ const Navigation = () => {
             <Button variant="uranium" size="sm">
               Get Started
             </Button>
+          </div>
+          
+          {/* Search Bar for desktop */}
+          <div className="hidden md:block lg:hidden flex-1 max-w-sm mx-4">
+            <SearchBar />
           </div>
 
           {/* Mobile menu button */}
@@ -71,7 +79,12 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 space-y-2 border-t border-border">
+          <div className="lg:hidden py-4 space-y-2 border-t border-border">
+            {/* Mobile Search */}
+            <div className="px-3 pb-4">
+              <SearchBar />
+            </div>
+            
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.href;
