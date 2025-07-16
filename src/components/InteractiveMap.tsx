@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { MapPin, Navigation, ExternalLink } from 'lucide-react';
+import { MapPin, Navigation, ExternalLink, Settings, Key } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 const InteractiveMap = () => {
   const [selectedMine, setSelectedMine] = useState<number | null>(null);
+  const [apiKey, setApiKey] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const mineLocations = [
     {
@@ -42,18 +45,80 @@ const InteractiveMap = () => {
     }
   ];
 
+  useEffect(() => {
+    checkForApiKey();
+  }, []);
+
+  const checkForApiKey = async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke('get-google-maps-key');
+      if (data?.api_key) {
+        setApiKey(data.api_key);
+      }
+    } catch (error) {
+      console.log('No API key configured yet');
+    }
+    setLoading(false);
+  };
+
   const generateGoogleMapsUrl = (mine?: typeof mineLocations[0]) => {
+    if (!apiKey) return '';
+    
     if (mine) {
-      return `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dOTkmDkGqU0XE8&q=${mine.coordinates[0]},${mine.coordinates[1]}&zoom=12`;
+      return `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${mine.coordinates[0]},${mine.coordinates[1]}&zoom=12`;
     }
     // Default view of Namibia uranium mining region
-    return `https://www.google.com/maps/embed/v1/view?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dOTkmDkGqU0XE8&center=-15.2,15.1&zoom=8`;
+    return `https://www.google.com/maps/embed/v1/view?key=${apiKey}&center=-15.2,15.1&zoom=8`;
   };
 
   const openInGoogleMaps = (mine: typeof mineLocations[0]) => {
     const url = `https://www.google.com/maps/search/?api=1&query=${mine.coordinates[0]},${mine.coordinates[1]}`;
     window.open(url, '_blank');
   };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-[400px]">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-uranium mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Loading map configuration...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!apiKey) {
+    return (
+      <Card className="max-w-2xl mx-auto">
+        <CardHeader className="text-center">
+          <Key className="w-16 h-16 text-uranium mx-auto mb-4" />
+          <CardTitle>Google Maps API Key Required</CardTitle>
+          <CardDescription className="space-y-2">
+            <p>To display the interactive map, you need a free Google Maps API key.</p>
+            <p className="text-sm">Follow these steps to get your free API key:</p>
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="bg-muted/50 rounded-lg p-4 space-y-3">
+            <h4 className="font-semibold text-sm">How to get your Google Maps API key:</h4>
+            <ol className="text-sm space-y-2 list-decimal list-inside">
+              <li>Go to the <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener noreferrer" className="text-uranium hover:underline">Google Cloud Console</a></li>
+              <li>Create a new project or select an existing one</li>
+              <li>Enable the "Maps Embed API"</li>
+              <li>Create credentials → API key</li>
+              <li>Copy your API key and add it using the button below</li>
+            </ol>
+          </div>
+          
+          <div className="text-center">
+            <p className="text-sm text-muted-foreground mb-4">
+              Once you have your API key, add it securely using our configuration system:
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <div className="space-y-6">
