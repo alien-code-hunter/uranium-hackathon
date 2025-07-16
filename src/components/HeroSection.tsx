@@ -63,7 +63,7 @@ const HeroSection = () => {
             </div>
             
             <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border/50">
-              <div className="text-3xl font-bold text-secondary mb-2">50+</div>
+              <div className="text-3xl font-bold text-secondary mb-2">49+</div>
               <div className="text-muted-foreground">Years of uranium mining experience</div>
             </div>
           </div>
