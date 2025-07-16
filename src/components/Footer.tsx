@@ -29,10 +29,10 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center">
-                <Globe className="w-5 h-5 text-white" />
+          <div className="lg:col-span-1 animate-fade-in-up">
+            <div className="flex items-center space-x-3 mb-4 group">
+              <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center group-hover:animate-glow-pulse transition-all duration-300">
+                <Globe className="w-5 h-5 text-white group-hover:animate-rotate-slow" />
               </div>
               <span className="text-xl font-bold">
                 Namibia <span className="text-uranium-green">Uranium</span> Portal
@@ -43,10 +43,10 @@ const Footer = () => {
               promoting sustainable mining and nuclear energy literacy.
             </p>
             <div className="flex space-x-2">
-              <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center hover:bg-uranium-green transition-colors cursor-pointer">
+              <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center hover:bg-uranium-green transition-all duration-300 hover:scale-110 cursor-pointer">
                 <Mail className="w-4 h-4" />
               </div>
-              <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center hover:bg-uranium-green transition-colors cursor-pointer">
+              <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center hover:bg-uranium-green transition-all duration-300 hover:scale-110 cursor-pointer">
                 <Phone className="w-4 h-4" />
               </div>
               <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center hover:bg-uranium-green transition-colors cursor-pointer">

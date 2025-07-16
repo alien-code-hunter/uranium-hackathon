@@ -50,18 +50,18 @@ const HeroSection = () => {
 
           {/* Key Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-            <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border/50">
-              <div className="text-3xl font-bold text-uranium mb-2">#3</div>
+            <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border/50 group hover:bg-card/70 transition-all duration-500 hover:scale-105 hover:shadow-glow cursor-pointer animate-fade-in-up" style={{animationDelay: '200ms'}}>
+              <div className="text-3xl font-bold text-uranium mb-2 group-hover:animate-glow-pulse">#3</div>
               <div className="text-muted-foreground">World's largest uranium producer</div>
             </div>
             
-            <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border/50">
-              <div className="text-3xl font-bold text-namibian-blue mb-2">11-12%</div>
+            <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border/50 group hover:bg-card/70 transition-all duration-500 hover:scale-105 hover:shadow-glow cursor-pointer animate-fade-in-up" style={{animationDelay: '400ms'}}>
+              <div className="text-3xl font-bold text-namibian-blue mb-2 group-hover:animate-glow-pulse">11-12%</div>
               <div className="text-muted-foreground">Global uranium supply from Namibia</div>
             </div>
             
-            <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border/50">
-              <div className="text-3xl font-bold text-secondary mb-2">49+</div>
+            <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border/50 group hover:bg-card/70 transition-all duration-500 hover:scale-105 hover:shadow-glow cursor-pointer animate-fade-in-up" style={{animationDelay: '600ms'}}>
+              <div className="text-3xl font-bold text-secondary mb-2 group-hover:animate-glow-pulse">49+</div>
               <div className="text-muted-foreground">Years of uranium mining experience</div>
             </div>
           </div>
@@ -70,8 +70,8 @@ const HeroSection = () => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-uranium rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-uranium rounded-full mt-2 animate-pulse"></div>
+        <div className="w-6 h-10 border-2 border-uranium rounded-full flex justify-center hover:animate-wiggle cursor-pointer transition-all duration-300 hover:border-uranium/80">
+          <div className="w-1 h-3 bg-uranium rounded-full mt-2 animate-float"></div>
         </div>
       </div>
 

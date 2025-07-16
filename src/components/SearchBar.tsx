@@ -142,14 +142,14 @@ const SearchBar = () => {
   return (
     <div className="relative">
       <form onSubmit={handleSearch} className="relative">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+        <div className="relative group">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4 group-focus-within:text-uranium transition-colors duration-300" />
           <Input
             type="text"
             placeholder="Search mining methods, technologies, education..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="pl-10 pr-10 w-full"
+            className="pl-10 pr-10 w-full transition-all duration-300 focus:ring-2 focus:ring-uranium/50 focus:border-uranium"
           />
           {query && (
             <Button
@@ -166,13 +166,14 @@ const SearchBar = () => {
       </form>
 
       {isOpen && results.length > 0 && (
-        <Card className="absolute top-full left-0 right-0 mt-2 z-50 max-h-96 overflow-y-auto">
+        <Card className="absolute top-full left-0 right-0 mt-2 z-50 max-h-96 overflow-y-auto animate-fade-in-down shadow-glow">
           <CardContent className="p-0">
-            {results.map((result) => (
+            {results.map((result, index) => (
               <button
                 key={result.id}
                 onClick={() => handleResultClick(result)}
-                className="w-full text-left p-4 hover:bg-muted/50 border-b border-border last:border-b-0 transition-colors"
+                className="w-full text-left p-4 hover:bg-muted/50 border-b border-border last:border-b-0 transition-all duration-300 hover:scale-[1.02] hover:shadow-sm animate-fade-in-up"
+                style={{animationDelay: `${index * 50}ms`}}
               >
                 <div className="font-medium text-sm">{result.title}</div>
                 <div className="text-xs text-muted-foreground mt-1">
