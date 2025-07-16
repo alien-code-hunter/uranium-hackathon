@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { BookOpen, Video, FileText, Download, ArrowRight } from 'lucide-react';
 import miningMethodsImage from '@/assets/mining-methods.jpg';
 const EducationSection = () => {
@@ -70,9 +71,27 @@ const EducationSection = () => {
         {/* Resource Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {resources.map((resource, index) => {
-          const Icon = resource.icon;
-          return;
-        })}
+            const Icon = resource.icon;
+            return (
+              <Card key={index} className="group hover:shadow-uranium transition-all duration-300">
+                <CardHeader>
+                  <Icon className="h-8 w-8 text-uranium mb-2" />
+                  <CardTitle className="text-xl">{resource.title}</CardTitle>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="secondary">{resource.category}</Badge>
+                    <span className="text-sm text-muted-foreground">{resource.items}</span>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="mb-4">{resource.description}</CardDescription>
+                  <Button variant="outline" className="w-full">
+                    <Download className="w-4 h-4 mr-2" />
+                    Access Resource
+                  </Button>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
 
         {/* Call to Action */}
