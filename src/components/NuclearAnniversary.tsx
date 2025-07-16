@@ -306,8 +306,26 @@ const NuclearAnniversary = () => {
             to shape our world and contribute to a sustainable future.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button variant="secondary" className="bg-white text-uranium hover:bg-white/90">
+            <Button 
+              variant="secondary" 
+              className="bg-white text-uranium hover:bg-white/90"
+              onClick={() => window.open('https://www.rosatom.ru/en/', '_blank')}
+            >
               Learn More About Nuclear Energy
+            </Button>
+            <Button 
+              variant="outline" 
+              className="border-white text-white hover:bg-white/10"
+              onClick={() => window.open('https://www.rosatom.ru/en/career/', '_blank')}
+            >
+              Healthcare Career Paths
+            </Button>
+            <Button 
+              variant="outline" 
+              className="border-white text-white hover:bg-white/10"
+              onClick={() => window.open('https://www.rosatom.ru/en/rosatom-group/science-and-innovations/', '_blank')}
+            >
+              Medical Research Opportunities
             </Button>
             <Button variant="outline" className="border-white text-white hover:bg-white/10">
               Explore Career Opportunities

@@ -182,10 +182,72 @@ const SustainabilitySection = () => {
             climate goals and sustainable development.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="secondary" size="lg" className="bg-white text-uranium hover:bg-white/90">
+            <Button 
+              variant="secondary" 
+              size="lg" 
+              className="bg-white text-uranium hover:bg-white/90"
+              onClick={async () => {
+                // Generate sustainability report
+                const { jsPDF } = await import('jspdf');
+                const doc = new jsPDF();
+                
+                doc.setFontSize(20);
+                doc.text('NAMIBIAN URANIUM SUSTAINABILITY REPORT 2024', 20, 30);
+                
+                doc.setFontSize(16);
+                doc.text('ENVIRONMENTAL IMPACT OVERVIEW', 20, 50);
+                
+                doc.setFontSize(12);
+                const content = [
+                  'Carbon Footprint: 2.1 kg CO₂/kg U - 65% lower than coal',
+                  'Water Recycling: 95% of process water recycled',
+                  'Land Rehabilitation: 87% of mined areas restored',
+                  'Biodiversity Protection: 15 protected species habitats maintained',
+                  'Community Investment: $12M annually in local development',
+                  'Employment: 11,200 direct jobs, 16,000 indirect jobs'
+                ];
+                
+                let yPos = 70;
+                content.forEach(line => {
+                  doc.text(line, 20, yPos);
+                  yPos += 10;
+                });
+                
+                doc.setFontSize(10);
+                doc.text(`Generated: ${new Date().toLocaleDateString()}`, 20, 280);
+                
+                doc.save('namibia-uranium-sustainability-report-2024.pdf');
+              }}
+            >
               View Sustainability Report
             </Button>
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="border-white text-white hover:bg-white/10"
+              onClick={async () => {
+                // Generate impact data CSV
+                const data = [
+                  ['Metric', 'Value', 'Unit', 'Year'],
+                  ['Carbon Emissions', '2.1', 'kg CO₂/kg U', '2024'],
+                  ['Water Recycling Rate', '95', '%', '2024'],
+                  ['Land Rehabilitated', '87', '% of total mined', '2024'],
+                  ['Community Investment', '12', 'Million USD', '2024'],
+                  ['Direct Employment', '11200', 'jobs', '2024'],
+                  ['Indirect Employment', '16000', 'jobs', '2024'],
+                  ['Protected Species', '15', 'habitat areas', '2024']
+                ];
+                
+                const csvContent = data.map(row => row.join(',')).join('\n');
+                const blob = new Blob([csvContent], { type: 'text/csv' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'namibia-uranium-impact-data-2024.csv';
+                link.click();
+                URL.revokeObjectURL(url);
+              }}
+            >
               Download Impact Data
             </Button>
           </div>

@@ -94,11 +94,33 @@ const Dashboards = () => {
               </div>
 
               <div className="flex gap-2">
-                <Button variant="outline" size="sm">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => {
+                    // Simulate data refresh
+                    window.location.reload();
+                  }}
+                >
                   <RefreshCw className="w-4 h-4 mr-2" />
                   Refresh
                 </Button>
-                <Button variant="outline" size="sm">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={async () => {
+                    // Export dashboard as PNG
+                    const { default: html2canvas } = await import('html2canvas');
+                    const dashboardElement = document.querySelector('.dashboard-content');
+                    if (dashboardElement) {
+                      const canvas = await html2canvas(dashboardElement as HTMLElement);
+                      const link = document.createElement('a');
+                      link.download = `namibia-uranium-dashboard-${new Date().toISOString().split('T')[0]}.png`;
+                      link.href = canvas.toDataURL();
+                      link.click();
+                    }
+                  }}
+                >
                   <Download className="w-4 h-4 mr-2" />
                   Export
                 </Button>
@@ -111,6 +133,7 @@ const Dashboards = () => {
         <section className="py-12">
           <div className="container mx-auto px-4">
             <Tabs defaultValue="production" className="w-full">
+              <div className="dashboard-content">
               <TabsList className="grid w-full grid-cols-5">
                 <TabsTrigger value="production">Production</TabsTrigger>
                 <TabsTrigger value="market">Market</TabsTrigger>
@@ -294,6 +317,7 @@ const Dashboards = () => {
                   </Card>
                 </div>
               </TabsContent>
+              </div>
             </Tabs>
           </div>
         </section>

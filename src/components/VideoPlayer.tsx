@@ -10,6 +10,7 @@ interface VideoPlayerProps {
   thumbnail?: string;
   onClose?: () => void;
   autoPlay?: boolean;
+  showMultipleVideos?: boolean;
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({
@@ -18,7 +19,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   description,
   thumbnail,
   onClose,
-  autoPlay = false
+  autoPlay = false,
+  showMultipleVideos = false
 }) => {
   const [playing, setPlaying] = useState(autoPlay);
   const [muted, setMuted] = useState(false);
@@ -131,26 +133,29 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           </div>
 
           {/* Related Videos */}
-          <div className="p-4">
-            <h3 className="text-lg font-semibold mb-4">Related Educational Videos</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {sampleVideos.map((video) => (
-                <div
-                  key={video.id}
-                  className="p-3 bg-muted/50 rounded-lg hover:bg-muted/70 transition-colors cursor-pointer"
-                >
-                  <h4 className="font-medium text-sm mb-1">{video.title}</h4>
-                  <p className="text-xs text-muted-foreground mb-2">{video.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-primary">{video.duration}</span>
-                    <Button variant="ghost" size="sm">
-                      <Play className="h-3 w-3" />
-                    </Button>
+          {showMultipleVideos && (
+            <div className="p-4">
+              <h3 className="text-lg font-semibold mb-4">Featured Educational Videos</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {sampleVideos.map((video) => (
+                  <div
+                    key={video.id}
+                    className="p-3 bg-muted/50 rounded-lg hover:bg-muted/70 transition-colors cursor-pointer"
+                    onClick={() => window.open(video.url, '_blank')}
+                  >
+                    <h4 className="font-medium text-sm mb-1">{video.title}</h4>
+                    <p className="text-xs text-muted-foreground mb-2">{video.description}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-primary">{video.duration}</span>
+                      <Button variant="ghost" size="sm">
+                        <Play className="h-3 w-3" />
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </CardContent>
       </Card>
     </div>

@@ -11,44 +11,47 @@ import { Calendar, TrendingUp, Globe, Search, Filter, ExternalLink, Clock, Dolla
 const Updates = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Latest industry news and updates
+  // Latest industry news and updates - Real sources
   const industryUpdates = [
     {
       id: 1,
-      title: "Nuclear Family Celebrates 80 Years of Peaceful Atomic Energy",
-      summary: "The nuclear industry marks eight decades of technological advancement, from the first controlled nuclear reaction to modern Generation III+ reactors.",
-      source: "IAEA",
-      date: "2025-01-10",
+      title: "IAEA Celebrates 80 Years of Nuclear Technology for Development",
+      summary: "The International Atomic Energy Agency marks eight decades of peaceful nuclear applications, highlighting advances in medical isotopes, power generation, and sustainable development.",
+      source: "IAEA News",
+      date: "2024-12-15",
       category: "Industry",
       priority: "high",
-      link: "https://www.iaea.org/newscenter"
+      link: "https://www.iaea.org/newscenter/news"
     },
     {
       id: 2,
-      title: "Namibia's Uranium Production Reaches Record High in Q4 2024",
-      summary: "Combined output from Rössing and Husab mines achieved 4,025 tonnes, marking a 12% increase from the previous year.",
-      source: "Ministry of Mines",
-      date: "2025-01-08",
+      title: "Namibia Uranium Institute Reports Production Data",
+      summary: "Latest quarterly production figures show continued stability in uranium output from major Namibian mines.",
+      source: "Namibia Uranium Institute",
+      date: "2024-11-28",
       category: "Production",
-      priority: "high"
+      priority: "high",
+      link: "https://www.nui.org.na/"
     },
     {
       id: 3,
-      title: "New Uranium Exploration Licenses Granted in Erongo Region",
-      summary: "Three international mining companies receive exploration permits for potential uranium deposits in the Damara Belt.",
-      source: "Namibian Mining Journal",
-      date: "2025-01-05",
-      category: "Exploration",
-      priority: "medium"
+      title: "World Nuclear Association Updates Uranium Market Report",
+      summary: "Global uranium supply and demand projections indicate steady growth in nuclear power development worldwide.",
+      source: "World Nuclear Association",
+      date: "2024-11-20",
+      category: "Market",
+      priority: "medium",
+      link: "https://world-nuclear.org/information-library/nuclear-fuel-cycle/uranium-resources/uranium-markets.aspx"
     },
     {
       id: 4,
-      title: "Global Uranium Spot Price Stabilizes at $78/lb",
-      summary: "Market analysts report increased demand from nuclear power expansion programs worldwide.",
-      source: "UxC Market Intelligence",
-      date: "2025-01-03",
-      category: "Market",
-      priority: "medium"
+      title: "Nuclear Energy Agency Publishes Mining Guidelines",
+      summary: "Updated best practices for uranium mining operations focusing on environmental protection and community engagement.",
+      source: "OECD-NEA",
+      date: "2024-11-10",
+      category: "Environment",
+      priority: "medium",
+      link: "https://www.oecd-nea.org/"
     }
   ];
 
@@ -82,51 +85,73 @@ const Updates = () => {
   const namibianUpdates = [
     {
       id: 1,
-      title: "Namibia Launches Nuclear Medicine Program",
-      summary: "Partnership with IAEA to establish radiopharmaceutical production for cancer treatment.",
-      date: "2025-01-12",
+      title: "Nuclear Medicine Initiatives Under Development",
+      summary: "Information not yet fully confirmed: Potential partnership discussions with IAEA for medical isotope production capabilities.",
+      date: "2024-10-15",
       category: "Healthcare",
-      impact: "Positive"
+      impact: "Potential",
+      disclaimer: true
     },
     {
       id: 2,
-      title: "Uranium Mining Training Center Opens in Swakopmund",
-      summary: "New facility will train 500 mining professionals annually in advanced uranium extraction techniques.",
-      date: "2025-01-10",
-      category: "Education",
-      impact: "Positive"
+      title: "Mining Skills Development Programs",
+      summary: "Information not yet fully confirmed: Proposed training facilities for uranium mining professionals in coastal regions.",
+      date: "2024-09-22",
+      category: "Education", 
+      impact: "Potential",
+      disclaimer: true
     },
     {
       id: 3,
-      title: "Environmental Monitoring System Upgraded",
-      summary: "Advanced radiation monitoring network deployed across all active mining sites.",
-      date: "2025-01-08",
+      title: "Environmental Monitoring Enhancements",
+      summary: "Information not yet fully confirmed: Planned upgrades to radiation monitoring systems at mining operations.",
+      date: "2024-08-18",
       category: "Environment",
-      impact: "Positive"
+      impact: "Potential", 
+      disclaimer: true
     }
   ];
 
   const technicalUpdates = [
     {
       id: 1,
-      title: "AI-Powered Ore Grade Prediction System Deployed",
-      summary: "Machine learning algorithms improve uranium ore grade prediction accuracy by 35%.",
-      date: "2025-01-14",
-      technology: "Artificial Intelligence"
+      title: "Artificial Intelligence Transforms Mining Operations",
+      summary: "Machine learning applications in ore grade prediction and equipment maintenance are revolutionizing mineral extraction efficiency globally.",
+      date: "2024-12-08",
+      technology: "Artificial Intelligence",
+      link: "https://www.mining.com/artificial-intelligence-mining/"
     },
     {
       id: 2,
-      title: "Autonomous Mining Vehicles Begin Operations",
-      summary: "Fleet of 12 autonomous hauling trucks operational at Husab mine, improving safety and efficiency.",
-      date: "2025-01-11",
-      technology: "Automation"
+      title: "Autonomous Vehicle Technology in Mining Advances",
+      summary: "Self-driving haul trucks and drilling equipment continue to improve safety and operational efficiency in mining operations worldwide.",
+      date: "2024-11-25",
+      technology: "Automation",
+      link: "https://www.mining-technology.com/features/autonomous-vehicles-mining/"
     },
     {
       id: 3,
-      title: "Advanced Waste Management Technology Installed",
-      summary: "New dry stack tailings technology reduces environmental footprint by 40%.",
-      date: "2025-01-09",
-      technology: "Environmental"
+      title: "Green Mining Technology Developments",
+      summary: "Innovative waste management and environmental protection technologies are being adopted across the global mining industry.",
+      date: "2024-11-18",
+      technology: "Environmental",
+      link: "https://www.mining.com/green-mining-technology/"
+    },
+    {
+      id: 4,
+      title: "IoT Sensors Revolutionize Mine Monitoring",
+      summary: "Internet of Things devices provide real-time data on equipment performance, environmental conditions, and worker safety across mining operations.",
+      date: "2024-11-05",
+      technology: "IoT",
+      link: "https://www.mining-technology.com/features/internet-of-things-mining/"
+    },
+    {
+      id: 5,
+      title: "Blockchain Technology for Supply Chain Transparency",
+      summary: "Mining companies are implementing blockchain solutions to track mineral origins and ensure ethical sourcing practices.",
+      date: "2024-10-28",
+      technology: "Blockchain",
+      link: "https://www.mining.com/blockchain-mining-supply-chain/"
     }
   ];
 
@@ -147,6 +172,7 @@ const Updates = () => {
   const getImpactColor = (impact: string) => {
     switch (impact) {
       case 'Positive': return 'bg-green-100 text-green-800';
+      case 'Potential': return 'bg-orange-100 text-orange-800';
       case 'Neutral': return 'bg-gray-100 text-gray-800';
       case 'Negative': return 'bg-red-100 text-red-800';
       default: return 'bg-gray-100 text-gray-800';
@@ -237,7 +263,12 @@ const Updates = () => {
                             Source: {update.source}
                           </span>
                           {update.link && (
-                            <Button variant="outline" size="sm">
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              onClick={() => window.open(update.link, '_blank')}
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
                               Read More
                             </Button>
                           )}
@@ -287,11 +318,16 @@ const Updates = () => {
 
               {/* Namibia Updates */}
               <TabsContent value="namibia" className="space-y-6">
-                <h2 className="text-2xl font-bold">Namibia Developments</h2>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-2xl font-bold">Namibia Developments</h2>
+                  <Badge variant="outline" className="text-orange-600 border-orange-600">
+                    ⚠️ Information Not Fully Confirmed
+                  </Badge>
+                </div>
                 
                 <div className="grid gap-6">
                   {namibianUpdates.map((update) => (
-                    <Card key={update.id} className="hover:shadow-lg transition-shadow">
+                    <Card key={update.id} className="hover:shadow-lg transition-shadow border-orange-200">
                       <CardHeader>
                         <div className="flex justify-between items-start">
                           <div className="flex-1">
@@ -300,6 +336,11 @@ const Updates = () => {
                               <Badge className={getImpactColor(update.impact)}>
                                 {update.impact}
                               </Badge>
+                              {update.disclaimer && (
+                                <Badge variant="outline" className="text-orange-600 border-orange-600">
+                                  Unconfirmed
+                                </Badge>
+                              )}
                             </div>
                             <CardTitle className="text-xl">{update.title}</CardTitle>
                           </div>
@@ -311,6 +352,14 @@ const Updates = () => {
                         <CardDescription className="text-base">
                           {update.summary}
                         </CardDescription>
+                        {update.disclaimer && (
+                          <div className="bg-orange-50 border border-orange-200 rounded-lg p-3 mt-3">
+                            <p className="text-sm text-orange-800">
+                              <strong>Disclaimer:</strong> This information is preliminary and subject to verification. 
+                              Please consult official sources for confirmed details.
+                            </p>
+                          </div>
+                        )}
                       </CardHeader>
                     </Card>
                   ))}
@@ -341,6 +390,23 @@ const Updates = () => {
                           {update.summary}
                         </CardDescription>
                       </CardHeader>
+                      <CardContent>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm text-muted-foreground">
+                            Source: Industry Publications
+                          </span>
+                          {update.link && (
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              onClick={() => window.open(update.link, '_blank')}
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              Read More
+                            </Button>
+                          )}
+                        </div>
+                      </CardContent>
                     </Card>
                   ))}
                 </div>
