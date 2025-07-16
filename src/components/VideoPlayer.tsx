@@ -30,21 +30,21 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     {
       id: 'intro',
       title: 'Introduction to Uranium Mining in Namibia',
-      url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      url: 'https://www.youtube.com/watch?v=OCnzStGL7Sg&list=PLN9CxEJa8sKrlADwLeacZ8Fi2S-drxWAg&index=2&ab_channel=StuffYouShouldKnow',
       description: 'Learn about Namibia\'s role in global uranium production and the importance of this industry to the nation\'s economy.',
       duration: '8:45'
     },
     {
       id: 'safety',
       title: 'Safety in Uranium Mining Operations',
-      url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      url: 'https://www.youtube.com/shorts/5iYg1F_YwHE',
       description: 'Discover the safety protocols and environmental protection measures used in modern uranium mining.',
       duration: '12:30'
     },
     {
       id: 'process',
       title: 'From Mine to Nuclear Fuel',
-      url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      url: 'https://www.youtube.com/watch?v=NaPUdob0IWo&ab_channel=WorldniteJourney',
       description: 'Follow the journey of uranium from extraction to processing into nuclear fuel for power generation.',
       duration: '15:20'
     }

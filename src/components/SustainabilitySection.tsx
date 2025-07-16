@@ -224,7 +224,7 @@ const SustainabilitySection = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="border-white text-white hover:bg-white/10"
+              className="bg-white text-uranium hover:bg-white/90"
               onClick={async () => {
                 // Generate impact data CSV
                 const data = [

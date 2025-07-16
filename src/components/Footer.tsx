@@ -6,12 +6,6 @@ import ministryLogo from '@/assets/ministry-mines.jpg';
 import rosatomLogo from '@/assets/rosatom-logo.jpg';
 
 const Footer = () => {
-  const quickLinks = [
-    { name: 'Interactive Map', href: '#map' },
-    { name: 'Education Hub', href: '#education' },
-    { name: 'Sustainability', href: '#sustainability' },
-    { name: 'For Kids', href: '#kids' },
-  ];
 
   const resources = [
     { name: 'Mining Methods', href: '#' },
@@ -65,22 +59,7 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Quick Links */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                {quickLinks.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-white/80 hover:text-uranium-green transition-colors duration-200"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+           
 
             {/* Resources */}
             <div>
@@ -151,12 +130,15 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-white/70 text-sm mb-4 md:mb-0">
-                 © 2024 Namibia Uranium Portal. All rights reserved. Built and maintained by Geotech Hackers. All Rights Reserved.
-          </div>
+                <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-center items-center gap-6 text-center">
+                 <div className="text-white/70 text-sm">
+                     © 2024 Namibia Uranium Portal. All rights reserved. Built and maintained by Geotech Hackers. All Rights Reserved.
+                 </div>
+                 </div>
+                
+                 <div>
 
-          <div className="flex space-x-6 text-sm">
+          <div className="flex space-x-6 text-sm justify-center">
             <a href="/privacy" className="text-white/70 hover:text-uranium-green transition-colors">
               Privacy Policy
             </a>
@@ -168,6 +150,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
+
       </footer>
 
       {/* Extra space below the footer */}

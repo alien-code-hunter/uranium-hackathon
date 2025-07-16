@@ -44,7 +44,7 @@ const Contact = () => {
       Organisation: 'Geotech Hackers'
     },
     {
-      name: 'Rutendo Madanyika',
+      name: 'Rutendo Madenyika',
       role: 'Co-Founder',
       email: 'missruru06@gmail.com',
       Organisation: 'Geotech Hackers'
@@ -56,9 +56,9 @@ const Contact = () => {
       Organisation: 'Geotech Hackers'
     },
     {
-      name: 'Simaneka Anthindi',
+      name: 'Simaneka Antindi',
       role: 'Co-Founder',
-      email: 'simaneka.an.Anthindi@gmail.com',
+      email: 'simaneka.a.03@gmail.com',
       Organisation: 'Geotech Hackers'
     }
   ];

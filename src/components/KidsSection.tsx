@@ -6,30 +6,7 @@ import kidsImage from '@/assets/kids-uranium.jpg';
 
 const KidsSection = () => {
   const activities = [
-    {
-      icon: Gamepad2,
-      title: 'Mining Simulator',
-      description: 'Build your own virtual uranium mine and learn about different extraction methods!',
-      difficulty: 'Easy',
-      time: '15 min',
-      color: 'bg-gradient-to-br from-purple-400 to-purple-600'
-    },
-    {
-      icon: Puzzle,
-      title: 'Nuclear Quiz',
-      description: 'Test your knowledge about uranium, nuclear power, and clean energy.',
-      difficulty: 'Medium',
-      time: '10 min',
-      color: 'bg-gradient-to-br from-blue-400 to-blue-600'
-    },
-    {
-      icon: Video,
-      title: 'Animated Stories',
-      description: 'Watch fun animations about uranium\'s journey from mine to power plant.',
-      difficulty: 'Easy',
-      time: '20 min',
-      color: 'bg-gradient-to-br from-green-400 to-green-600'
-    }
+    
   ];
 
   const achievements = [

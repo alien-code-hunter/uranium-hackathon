@@ -188,7 +188,7 @@ const Updates = () => {
         <section className="py-20 bg-gradient-hero">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Industry <span className="text-uranium">Updates</span>
+              Industry Updates
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
               Stay informed with the latest developments in Namibia's uranium mining sector and global nuclear industry

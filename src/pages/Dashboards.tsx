@@ -54,7 +54,7 @@ const Dashboards = () => {
         <section className="py-20 bg-gradient-hero">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Interactive <span className="text-uranium">Dashboards</span>
+              Interactive Dashboards
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
               Real-time analytics and insights into Namibia's uranium mining industry

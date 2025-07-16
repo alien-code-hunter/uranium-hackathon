@@ -12,19 +12,9 @@ const Education = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <main>
-        <section className="py-20 bg-gradient-subtle">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Educational Resources
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Access comprehensive learning materials, research papers, datasets, and interactive content
-            </p>
-          </div>
-        </section>
+        
         <EducationSection />
         <EducationalContent />
-        <UraniumMiningMethods />
         <HealthcareBenefits />
         <NuclearAnniversary />
       </main>
