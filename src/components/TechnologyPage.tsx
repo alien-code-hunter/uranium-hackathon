@@ -7,87 +7,102 @@ import AISection from './AISection';
 import WhatsLackingSection from './WhatsLackingSection';
 
 const TechnologyPage = () => {
-  const generateStrategyReport = () => {
-    const reportContent = `
-NAMIBIA URANIUM MINING TECHNOLOGY & AI STRATEGY REPORT
-=====================================================
-
-EXECUTIVE SUMMARY
------------------
-This comprehensive report outlines the current state and future potential of technology and artificial intelligence applications in Namibia's uranium mining industry.
-
-CURRENT TECHNOLOGY LANDSCAPE
----------------------------
-1. Mining Automation
-   - Autonomous haul trucks at major mines
-   - Automated drilling systems
-   - Remote-controlled mining equipment
-
-2. Processing Technology
-   - Advanced ore sorting systems
-   - Hydrometallurgical processing
-   - Real-time quality control systems
-
-3. Environmental Monitoring
-   - Continuous air quality monitoring
-   - Groundwater monitoring systems
-   - Dust suppression technologies
-
-AI APPLICATIONS IN URANIUM MINING
----------------------------------
-1. Predictive Maintenance
-   - Equipment failure prediction
-   - Maintenance scheduling optimization
-   - Cost reduction through prevention
-
-2. Resource Optimization
-   - Ore grade prediction
-   - Mine planning optimization
-   - Production scheduling
-
-3. Safety Enhancement
-   - Real-time hazard detection
-   - Worker safety monitoring
-   - Emergency response systems
-
-AREAS FOR DEVELOPMENT
---------------------
-1. Advanced Robotics
-   - Underground exploration robots
-   - Automated sampling systems
-   - Remote maintenance capabilities
-
-2. Data Analytics
-   - Big data processing
-   - Machine learning algorithms
-   - Integrated management systems
-
-3. Environmental Technology
-   - Water recycling systems
-   - Carbon capture technologies
-   - Biodiversity monitoring
-
-STRATEGIC RECOMMENDATIONS
-------------------------
-1. Investment in R&D
-2. Skills development programs
-3. Technology partnerships
-4. Regulatory framework development
-
-CONCLUSION
-----------
-Namibia's uranium mining industry is well-positioned to leverage advanced technologies and AI for sustainable growth and competitive advantage.
-
-Generated: ${new Date().toLocaleDateString()}
-    `;
-
-    const blob = new Blob([reportContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'namibia-uranium-technology-strategy-report.txt';
-    link.click();
-    URL.revokeObjectURL(url);
+  const generateStrategyReport = async () => {
+    // Import jsPDF dynamically
+    const { jsPDF } = await import('jspdf');
+    
+    const doc = new jsPDF();
+    
+    // Add title
+    doc.setFontSize(20);
+    doc.text('NAMIBIA URANIUM MINING TECHNOLOGY & AI STRATEGY REPORT', 20, 30);
+    
+    doc.setFontSize(16);
+    doc.text('EXECUTIVE SUMMARY', 20, 50);
+    
+    doc.setFontSize(12);
+    const summary = 'This comprehensive report outlines the current state and future potential of technology and artificial intelligence applications in Namibia\'s uranium mining industry.';
+    doc.text(summary, 20, 65, { maxWidth: 170 });
+    
+    doc.setFontSize(16);
+    doc.text('CURRENT TECHNOLOGY LANDSCAPE', 20, 90);
+    
+    doc.setFontSize(12);
+    const technologies = [
+      '1. Mining Automation',
+      '   - Autonomous haul trucks at major mines',
+      '   - Automated drilling systems',
+      '   - Remote-controlled mining equipment',
+      '',
+      '2. Processing Technology',
+      '   - Advanced ore sorting systems',
+      '   - Hydrometallurgical processing',
+      '   - Real-time quality control systems',
+      '',
+      '3. Environmental Monitoring',
+      '   - Continuous air quality monitoring',
+      '   - Groundwater monitoring systems',
+      '   - Dust suppression technologies'
+    ];
+    
+    let yPos = 105;
+    technologies.forEach(line => {
+      doc.text(line, 20, yPos);
+      yPos += 6;
+    });
+    
+    // Add new page
+    doc.addPage();
+    
+    doc.setFontSize(16);
+    doc.text('AI APPLICATIONS IN URANIUM MINING', 20, 30);
+    
+    doc.setFontSize(12);
+    const aiApps = [
+      '1. Predictive Maintenance',
+      '   - Equipment failure prediction',
+      '   - Maintenance scheduling optimization',
+      '   - Cost reduction through prevention',
+      '',
+      '2. Resource Optimization',
+      '   - Ore grade prediction',
+      '   - Mine planning optimization',
+      '   - Production scheduling',
+      '',
+      '3. Safety Enhancement',
+      '   - Real-time hazard detection',
+      '   - Worker safety monitoring',
+      '   - Emergency response systems'
+    ];
+    
+    yPos = 45;
+    aiApps.forEach(line => {
+      doc.text(line, 20, yPos);
+      yPos += 6;
+    });
+    
+    doc.setFontSize(16);
+    doc.text('STRATEGIC RECOMMENDATIONS', 20, yPos + 20);
+    
+    doc.setFontSize(12);
+    const recommendations = [
+      '1. Investment in R&D',
+      '2. Skills development programs',
+      '3. Technology partnerships',
+      '4. Regulatory framework development'
+    ];
+    
+    yPos += 35;
+    recommendations.forEach(line => {
+      doc.text(line, 20, yPos);
+      yPos += 8;
+    });
+    
+    doc.setFontSize(10);
+    doc.text(`Generated: ${new Date().toLocaleDateString()}`, 20, 280);
+    
+    // Save the PDF
+    doc.save('namibia-uranium-technology-strategy-report.pdf');
   };
 
   const advancedTechnologies = [

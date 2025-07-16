@@ -31,7 +31,7 @@ const UraniumMiningMethods = () => {
     if (miningMethods.length > 0 && !selectedMethod) {
       setSelectedMethod(miningMethods[0].method_type);
     }
-  }, [miningMethods, selectedMethod]);
+  }, [miningMethods]);
 
   const loadMiningMethods = async () => {
     const { data } = await supabase

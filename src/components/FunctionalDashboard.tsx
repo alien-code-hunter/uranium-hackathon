@@ -312,6 +312,20 @@ const FunctionalDashboard = () => {
                       )}
                     </BarChart>
                   </ResponsiveContainer>
+                  <div className="flex items-center justify-center gap-4 mt-4">
+                    {selectedRegion !== 'khomas' && (
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 bg-[#ff6b6b] rounded"></div>
+                        <span className="text-sm">Rössing Mine</span>
+                      </div>
+                    )}
+                    {selectedRegion !== 'erongo' && (
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 bg-[#4ecdc4] rounded"></div>
+                        <span className="text-sm">Husab Mine</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -336,6 +350,16 @@ const FunctionalDashboard = () => {
                       <Line type="monotone" dataKey="contractPrice" stroke="#4ecdc4" strokeWidth={2} name="Contract Price" />
                     </LineChart>
                   </ResponsiveContainer>
+                  <div className="flex items-center justify-center gap-4 mt-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 bg-[#ff6b6b] rounded"></div>
+                      <span className="text-sm">Spot Price (USD/lb)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 bg-[#4ecdc4] rounded"></div>
+                      <span className="text-sm">Contract Price (USD/lb)</span>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -397,6 +421,16 @@ const FunctionalDashboard = () => {
                       <Bar dataKey="indirect" fill="#4ecdc4" name="Indirect Jobs" />
                     </BarChart>
                   </ResponsiveContainer>
+                  <div className="flex items-center justify-center gap-4 mt-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 bg-[#ff6b6b] rounded"></div>
+                      <span className="text-sm">Direct Employment</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 bg-[#4ecdc4] rounded"></div>
+                      <span className="text-sm">Indirect Employment</span>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
