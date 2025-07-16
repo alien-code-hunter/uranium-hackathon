@@ -1,22 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { MapPin, Settings, Info } from 'lucide-react';
+import { MapPin, Navigation, ExternalLink } from 'lucide-react';
 
 const InteractiveMap = () => {
-  const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<mapboxgl.Map | null>(null);
-  const [showTokenInput, setShowTokenInput] = useState(false);
-  const [mapboxToken, setMapboxToken] = useState('');
-  const [mapInitialized, setMapInitialized] = useState(false);
+  const [selectedMine, setSelectedMine] = useState<number | null>(null);
 
   const mineLocations = [
     {
       name: 'Rössing Mine',
-      coordinates: [15.0947, -15.2969] as [number, number],
+      coordinates: [-15.2969, 15.0947] as [number, number],
       location: 'Erongo Region',
       type: 'Open Pit',
       production: '2,500 tonnes/year',
@@ -27,7 +20,7 @@ const InteractiveMap = () => {
     },
     {
       name: 'Husab Mine',
-      coordinates: [15.2000, -15.1500] as [number, number],
+      coordinates: [-15.1500, 15.2000] as [number, number],
       location: 'Erongo Region', 
       type: 'Open Pit',
       production: '5,500 tonnes/year',
@@ -38,7 +31,7 @@ const InteractiveMap = () => {
     },
     {
       name: 'Langer Heinrich',
-      coordinates: [15.0833, -15.4167] as [number, number],
+      coordinates: [-15.4167, 15.0833] as [number, number],
       location: 'Erongo Region',
       type: 'Open Pit', 
       production: '1,350 tonnes/year',
@@ -49,181 +42,67 @@ const InteractiveMap = () => {
     }
   ];
 
-  const initializeMap = (token: string) => {
-    if (!mapContainer.current) return;
-
-    mapboxgl.accessToken = token;
-    
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/satellite-v9',
-      center: [15.0, -22.0], // Center on Namibia
-      zoom: 6,
-      pitch: 45,
-      bearing: 0
-    });
-
-    // Add navigation controls
-    map.current.addControl(
-      new mapboxgl.NavigationControl({
-        visualizePitch: true,
-      }),
-      'top-right'
-    );
-
-    // Add scale control
-    map.current.addControl(new mapboxgl.ScaleControl());
-
-    // Add mine markers
-    map.current.on('load', () => {
-      mineLocations.forEach((mine, index) => {
-        // Create custom marker element
-        const markerEl = document.createElement('div');
-        markerEl.className = 'custom-marker';
-        markerEl.style.cssText = `
-          width: 20px;
-          height: 20px;
-          background: ${mine.status === 'Operating' ? '#00ff00' : '#ffaa00'};
-          border: 2px solid white;
-          border-radius: 50%;
-          cursor: pointer;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        `;
-
-        // Create popup content
-        const popupContent = `
-          <div style="padding: 10px; max-width: 300px;">
-            <h3 style="margin: 0 0 8px 0; color: #333; font-weight: bold;">${mine.name}</h3>
-            <p style="margin: 0 0 5px 0; color: #666; font-size: 12px;"><strong>Location:</strong> ${mine.location}</p>
-            <p style="margin: 0 0 5px 0; color: #666; font-size: 12px;"><strong>Coordinates:</strong> ${Math.abs(mine.coordinates[1]).toFixed(4)}°S, ${mine.coordinates[0].toFixed(4)}°E</p>
-            <p style="margin: 0 0 5px 0; color: #666; font-size: 12px;"><strong>Type:</strong> ${mine.type}</p>
-            <p style="margin: 0 0 5px 0; color: #666; font-size: 12px;"><strong>Production:</strong> ${mine.production}</p>
-            <p style="margin: 0 0 5px 0; color: #666; font-size: 12px;"><strong>Operator:</strong> ${mine.operator}</p>
-            <p style="margin: 0 0 5px 0; color: #666; font-size: 12px;"><strong>Established:</strong> ${mine.established}</p>
-            <p style="margin: 0 0 8px 0; color: #666; font-size: 12px;"><strong>Status:</strong> <span style="color: ${mine.status === 'Operating' ? '#00aa00' : '#aa6600'};">${mine.status}</span></p>
-            <p style="margin: 0; color: #555; font-size: 11px; font-style: italic;">${mine.details}</p>
-          </div>
-        `;
-
-        const popup = new mapboxgl.Popup({
-          offset: 25,
-          closeButton: true,
-          closeOnClick: false
-        }).setHTML(popupContent);
-
-        // Add marker to map
-        new mapboxgl.Marker(markerEl)
-          .setLngLat(mine.coordinates)
-          .setPopup(popup)
-          .addTo(map.current!);
-      });
-    });
-
-    setMapInitialized(true);
+  const generateGoogleMapsUrl = (mine?: typeof mineLocations[0]) => {
+    if (mine) {
+      return `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dOTkmDkGqU0XE8&q=${mine.coordinates[0]},${mine.coordinates[1]}&zoom=12`;
+    }
+    // Default view of Namibia uranium mining region
+    return `https://www.google.com/maps/embed/v1/view?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dOTkmDkGqU0XE8&center=-15.2,15.1&zoom=8`;
   };
 
-  const handleTokenSubmit = () => {
-    if (mapboxToken.trim()) {
-      localStorage.setItem('mapbox_token', mapboxToken);
-      initializeMap(mapboxToken);
-      setShowTokenInput(false);
-    }
+  const openInGoogleMaps = (mine: typeof mineLocations[0]) => {
+    const url = `https://www.google.com/maps/search/?api=1&query=${mine.coordinates[0]},${mine.coordinates[1]}`;
+    window.open(url, '_blank');
   };
-
-  useEffect(() => {
-    // User provided token
-    const userToken = 'pk.eyJ1IjoibW9uZ3JvbzE2IiwiYSI6ImNtZDYwbnZqZDAzdG8yw3IweG5sdDhmdHcifQ.WJirXHFV_jNW4Hk71QP_Lw';
-    const savedToken = localStorage.getItem('mapbox_token') || userToken;
-    
-    if (savedToken) {
-      setMapboxToken(savedToken);
-      localStorage.setItem('mapbox_token', savedToken);
-      initializeMap(savedToken);
-    }
-
-    return () => {
-      map.current?.remove();
-    };
-  }, []);
-
-  if (!mapInitialized && !showTokenInput) {
-    return (
-      <Card className="max-w-2xl mx-auto">
-        <CardHeader className="text-center">
-          <MapPin className="w-16 h-16 text-uranium mx-auto mb-4" />
-          <CardTitle>Interactive Mapping Portal</CardTitle>
-          <CardDescription>
-            To use the interactive map, you need a Mapbox access token. Get yours free at{' '}
-            <a href="https://mapbox.com/" target="_blank" rel="noopener noreferrer" className="text-uranium hover:underline">
-              mapbox.com
-            </a>
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="text-center">
-          <Button onClick={() => setShowTokenInput(true)} variant="uranium">
-            <Settings className="w-4 h-4 mr-2" />
-            Configure Map Access
-          </Button>
-        </CardContent>
-      </Card>
-    );
-  }
-
-  if (showTokenInput && !mapInitialized) {
-    return (
-      <Card className="max-w-md mx-auto">
-        <CardHeader>
-          <CardTitle>Enter Mapbox Token</CardTitle>
-          <CardDescription>
-            Your token will be saved locally for future use
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <Input
-            type="password"
-            placeholder="pk.eyJ1IjoieW91cnVzZXJuYW1lIiwiYSI6IjEyM..."
-            value={mapboxToken}
-            onChange={(e) => setMapboxToken(e.target.value)}
-          />
-          <div className="flex gap-2">
-            <Button onClick={handleTokenSubmit} className="flex-1">
-              Initialize Map
-            </Button>
-            <Button variant="outline" onClick={() => setShowTokenInput(false)}>
-              Cancel
-            </Button>
-          </div>
-          <div className="text-xs text-muted-foreground">
-            <Info className="w-3 h-3 inline mr-1" />
-            Get your free token at mapbox.com
-          </div>
-        </CardContent>
-      </Card>
-    );
-  }
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h3 className="text-xl font-semibold">Live Mining Map Portal</h3>
-        <Button 
-          variant="outline" 
-          size="sm"
-          onClick={() => {
-            localStorage.removeItem('mapbox_token');
-            setMapInitialized(false);
-            setMapboxToken('');
-            map.current?.remove();
-          }}
-        >
-          <Settings className="w-4 h-4 mr-2" />
-          Reconfigure
-        </Button>
+        <h3 className="text-xl font-semibold">Interactive Mining Map</h3>
+        <div className="flex gap-2">
+          <Button 
+            variant="outline" 
+            size="sm"
+            onClick={() => setSelectedMine(null)}
+          >
+            <MapPin className="w-4 h-4 mr-2" />
+            Show All Mines
+          </Button>
+        </div>
       </div>
       
       <div className="relative h-[600px] rounded-xl overflow-hidden border border-border">
-        <div ref={mapContainer} className="absolute inset-0" />
+        <iframe
+          src={generateGoogleMapsUrl(selectedMine !== null ? mineLocations[selectedMine] : undefined)}
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="rounded-xl"
+        />
         
+        {/* Map Overlay Info */}
+        <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm rounded-lg p-3 border border-border max-w-xs">
+          <h4 className="font-semibold text-sm mb-2">
+            {selectedMine !== null ? mineLocations[selectedMine].name : 'Namibia Uranium Mines'}
+          </h4>
+          {selectedMine !== null ? (
+            <div className="space-y-1 text-xs">
+              <p><strong>Status:</strong> <span className={`${
+                mineLocations[selectedMine].status === 'Operating' ? 'text-green-600' : 'text-yellow-600'
+              }`}>{mineLocations[selectedMine].status}</span></p>
+              <p><strong>Production:</strong> {mineLocations[selectedMine].production}</p>
+              <p><strong>Operator:</strong> {mineLocations[selectedMine].operator}</p>
+            </div>
+          ) : (
+            <p className="text-xs text-muted-foreground">
+              Click on mine cards below to focus on specific locations
+            </p>
+          )}
+        </div>
+
         {/* Map Legend */}
         <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-sm rounded-lg p-3 border border-border">
           <h4 className="font-semibold text-sm mb-2">Mine Status</h4>
@@ -245,16 +124,10 @@ const InteractiveMap = () => {
         {mineLocations.map((mine, index) => (
           <Card 
             key={mine.name}
-            className="hover:shadow-lg transition-all duration-300 cursor-pointer"
-            onClick={() => {
-              if (map.current) {
-                map.current.flyTo({
-                  center: mine.coordinates,
-                  zoom: 12,
-                  pitch: 60
-                });
-              }
-            }}
+            className={`hover:shadow-lg transition-all duration-300 cursor-pointer ${
+              selectedMine === index ? 'ring-2 ring-uranium shadow-lg' : ''
+            }`}
+            onClick={() => setSelectedMine(index)}
           >
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
@@ -265,22 +138,57 @@ const InteractiveMap = () => {
               </div>
               <CardDescription>{mine.location}</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Production:</span>
-                <span className="font-medium">{mine.production}</span>
+            <CardContent className="space-y-3">
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Production:</span>
+                  <span className="font-medium">{mine.production}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Operator:</span>
+                  <span className="font-medium">{mine.operator}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Since:</span>
+                  <span className="font-medium">{mine.established}</span>
+                </div>
               </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Operator:</span>
-                <span className="font-medium">{mine.operator}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Since:</span>
-                <span className="font-medium">{mine.established}</span>
+              
+              <div className="pt-2 border-t border-border">
+                <div className="flex gap-2">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="flex-1"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedMine(index);
+                    }}
+                  >
+                    <Navigation className="w-3 h-3 mr-1" />
+                    Focus
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className="flex-1"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openInGoogleMaps(mine);
+                    }}
+                  >
+                    <ExternalLink className="w-3 h-3 mr-1" />
+                    View
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
         ))}
+      </div>
+
+      <div className="text-center text-xs text-muted-foreground">
+        <p>Interactive map powered by Google Maps • Click mine cards to focus on specific locations</p>
       </div>
     </div>
   );
