@@ -4,19 +4,13 @@ import { ArrowRight, Play, MapPin, BookOpen, ChevronDown } from 'lucide-react';
 import heroImage from '@/assets/uranium-hero.jpg';
 import VideoPlayer from './VideoPlayer';
 import InteractiveMap from './InteractiveMap';
-
 const HeroSection = () => {
   const [showVideo, setShowVideo] = useState(false);
   const [showMap, setShowMap] = useState(false);
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <img
-          src={heroImage}
-          alt="Namibian uranium mining landscape"
-          className="w-full h-full object-cover"
-        />
+        <img src={heroImage} alt="Namibian uranium mining landscape" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/90 to-background/70" />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
       </div>
@@ -38,32 +32,19 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button 
-              variant="uranium" 
-              size="xl" 
-              className="group"
-              onClick={() => setShowMap(true)}
-            >
+            <Button variant="uranium" size="xl" className="group" onClick={() => setShowMap(true)}>
               Explore Interactive Map
               <MapPin className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </Button>
             
-            <Button 
-              variant="educational" 
-              size="xl" 
-              className="group"
-              onClick={() => document.getElementById('education')?.scrollIntoView({ behavior: 'smooth' })}
-            >
+            <Button variant="educational" size="xl" className="group" onClick={() => document.getElementById('education')?.scrollIntoView({
+            behavior: 'smooth'
+          })}>
               Start Learning
               <BookOpen className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </Button>
             
-            <Button 
-              variant="ghost" 
-              size="xl" 
-              className="group"
-              onClick={() => setShowVideo(true)}
-            >
+            <Button variant="ghost" size="xl" className="group" onClick={() => setShowVideo(true)}>
               <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
               Watch Introduction
             </Button>
@@ -72,7 +53,7 @@ const HeroSection = () => {
           {/* Key Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
             <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border/50">
-              <div className="text-3xl font-bold text-uranium mb-2">#2</div>
+              <div className="text-3xl font-bold text-uranium mb-2">#3</div>
               <div className="text-muted-foreground">World's largest uranium producer</div>
             </div>
             
@@ -97,27 +78,14 @@ const HeroSection = () => {
       </div>
 
       {/* Video Modal */}
-      {showVideo && (
-        <VideoPlayer
-          url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-          title="Introduction to Uranium Mining in Namibia"
-          description="Discover Namibia's role as a leading uranium producer and the technology behind modern mining operations."
-          onClose={() => setShowVideo(false)}
-          autoPlay={true}
-        />
-      )}
+      {showVideo && <VideoPlayer url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" title="Introduction to Uranium Mining in Namibia" description="Discover Namibia's role as a leading uranium producer and the technology behind modern mining operations." onClose={() => setShowVideo(false)} autoPlay={true} />}
 
       {/* Interactive Map Modal */}
-      {showMap && (
-        <div className="fixed inset-0 bg-black/90 z-50 overflow-y-auto">
+      {showMap && <div className="fixed inset-0 bg-black/90 z-50 overflow-y-auto">
           <div className="min-h-screen p-4">
             <div className="max-w-7xl mx-auto">
               <div className="flex justify-end mb-4">
-                <Button 
-                  variant="ghost" 
-                  className="text-white hover:bg-white/20"
-                  onClick={() => setShowMap(false)}
-                >
+                <Button variant="ghost" className="text-white hover:bg-white/20" onClick={() => setShowMap(false)}>
                   <ChevronDown className="h-4 w-4 mr-2" />
                   Close Map
                 </Button>
@@ -125,10 +93,7 @@ const HeroSection = () => {
               <InteractiveMap />
             </div>
           </div>
-        </div>
-      )}
-    </section>
-  );
+        </div>}
+    </section>;
 };
-
 export default HeroSection;
