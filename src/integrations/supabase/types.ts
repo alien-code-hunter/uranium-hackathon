@@ -300,6 +300,36 @@ export type Database = {
         }
         Relationships: []
       }
+      game_sessions: {
+        Row: {
+          completed: boolean | null
+          created_at: string
+          game_type: string
+          id: string
+          player_name: string
+          score: number | null
+          session_data: Json | null
+        }
+        Insert: {
+          completed?: boolean | null
+          created_at?: string
+          game_type: string
+          id?: string
+          player_name: string
+          score?: number | null
+          session_data?: Json | null
+        }
+        Update: {
+          completed?: boolean | null
+          created_at?: string
+          game_type?: string
+          id?: string
+          player_name?: string
+          score?: number | null
+          session_data?: Json | null
+        }
+        Relationships: []
+      }
       health_systems: {
         Row: {
           category: string
@@ -653,6 +683,45 @@ export type Database = {
           specifications?: Json | null
           strategic_importance?: string | null
           suppliers?: string[] | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      player_stats: {
+        Row: {
+          achievements_earned: string[] | null
+          created_at: string
+          games_played: number | null
+          id: string
+          mining_levels_completed: number | null
+          player_name: string
+          quiz_completed: number | null
+          stories_watched: number | null
+          total_score: number | null
+          updated_at: string
+        }
+        Insert: {
+          achievements_earned?: string[] | null
+          created_at?: string
+          games_played?: number | null
+          id?: string
+          mining_levels_completed?: number | null
+          player_name: string
+          quiz_completed?: number | null
+          stories_watched?: number | null
+          total_score?: number | null
+          updated_at?: string
+        }
+        Update: {
+          achievements_earned?: string[] | null
+          created_at?: string
+          games_played?: number | null
+          id?: string
+          mining_levels_completed?: number | null
+          player_name?: string
+          quiz_completed?: number | null
+          stories_watched?: number | null
+          total_score?: number | null
           updated_at?: string
         }
         Relationships: []

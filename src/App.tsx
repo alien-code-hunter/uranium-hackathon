@@ -11,6 +11,7 @@ import Education from "./pages/Education";
 import Technology from "./pages/Technology";
 import Legal from "./pages/Legal";
 import Kids from "./pages/Kids";
+import KidsAdventure from "./pages/KidsAdventure";
 import Dashboards from "./pages/Dashboards";
 import Updates from "./pages/Updates";
 import Privacy from "./pages/Privacy";
@@ -34,7 +35,8 @@ const App = () => (
           <Route path="/education" element={<Education />} />
           <Route path="/technology" element={<Technology />} />
           <Route path="/legal" element={<Legal />} />
-          <Route path="/kids" element={<Kids />} />
+            <Route path="/kids" element={<Kids />} />
+            <Route path="/kids-adventure" element={<KidsAdventure />} />
           <Route path="/dashboards" element={<Dashboards />} />
           <Route path="/updates" element={<Updates />} />
           <Route path="/privacy" element={<Privacy />} />

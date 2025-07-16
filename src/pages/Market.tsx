@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from '@/components/Navigation';
+import MarketDataUpdater from '@/components/MarketDataUpdater';
 import MarketSection from '@/components/MarketSection';
 import ImportExportSection from '@/components/ImportExportSection';
 import ComparisonSection from '@/components/ComparisonSection';
@@ -20,6 +21,7 @@ const Market = () => {
             </p>
           </div>
         </section>
+        <MarketDataUpdater />
         <MarketSection />
         <ImportExportSection />
         <ComparisonSection />

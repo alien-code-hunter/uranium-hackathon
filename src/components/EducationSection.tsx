@@ -61,7 +61,11 @@ const EducationSection = () => {
                 <p className="text-muted-foreground">Solution mining that dissolves uranium underground without traditional excavation.</p>
               </div>
             </div>
-            <Button variant="educational" className="group">
+            <Button 
+              variant="educational" 
+              className="group"
+              onClick={() => window.location.href = '/mining'}
+            >
               Learn More About Mining
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>

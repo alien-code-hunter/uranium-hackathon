@@ -95,7 +95,12 @@ const KidsSection = () => {
                 </div>
               </div>
             </div>
-            <Button variant="uranium" size="lg" className="w-full sm:w-auto">
+            <Button 
+              variant="uranium" 
+              size="lg" 
+              className="w-full sm:w-auto"
+              onClick={() => window.location.href = '/kids-adventure'}
+            >
               Start Your Adventure! 🚀
             </Button>
           </div>

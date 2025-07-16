@@ -4,6 +4,7 @@ import KidsSection from '@/components/KidsSection';
 import KidsLearning from '@/components/KidsLearning';
 import AdvancedKidsGames from '@/components/AdvancedKidsGames';
 import AdvancedKidsAdventure from '@/components/AdvancedKidsAdventure';
+import KidsAdventure from '@/components/KidsAdventure';
 import YoungScientists from '@/components/YoungScientists';
 import Footer from '@/components/Footer';
 
@@ -23,6 +24,7 @@ const Kids = () => {
           </div>
         </section>
         <KidsSection />
+        <KidsAdventure />
         <KidsLearning />
         <AdvancedKidsGames />
         <AdvancedKidsAdventure />
