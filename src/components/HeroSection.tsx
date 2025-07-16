@@ -58,7 +58,7 @@ const HeroSection = () => {
             </div>
             
             <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border/50">
-              <div className="text-3xl font-bold text-namibian-blue mb-2">11%</div>
+              <div className="text-3xl font-bold text-namibian-blue mb-2">11-12%</div>
               <div className="text-muted-foreground">Global uranium supply from Namibia</div>
             </div>
             
