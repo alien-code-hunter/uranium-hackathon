@@ -161,21 +161,13 @@ const TechnologyPage = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Advanced technologies, artificial intelligence applications, and areas for future development in uranium mining
           </p>
-          
         </div>
       </section>
 
       {/* Advanced Technologies */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Explore Advanced Mining Technologies
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Discover cutting-edge technologies revolutionizing uranium mining operations worldwide
-            </p>
-          </div>
+          
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {advancedTechnologies.map((tech, index) => (
@@ -216,6 +208,14 @@ const TechnologyPage = () => {
           </div>
         </div>
       </section>
+
+            <div className="flex justify-center mt-4">
+        <Button onClick={generateStrategyReport} size="lg">
+          <Download className="h-5 w-5 mr-2" />
+          Download Full Strategy Report
+        </Button>
+      </div>
+
 
       {/* AI Section */}
       <AISection />
