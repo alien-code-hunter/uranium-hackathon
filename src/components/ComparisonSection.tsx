@@ -14,7 +14,7 @@ const ComparisonSection = () => {
       symbol: 'U',
       production: '5,413 tonnes',
       value: '$254M',
-      rank: '#2 globally',
+      rank: '#3 globally',
       impact: 'low',
       method: 'Open pit, Underground',
       jobs: '8,500',
