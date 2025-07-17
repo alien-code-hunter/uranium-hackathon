@@ -13,6 +13,12 @@ const Footer = () => {
     { name: 'Research Papers', href: '#' },
     { name: 'Video Library', href: '#' },
   ];
+  const quicklinks = [
+    { name: 'Mining Methods', href: '/mining' },
+    { name: 'Datasets', href: '/education' },
+    { name: 'Research Papers', href: '/education' },
+    { name: 'Video Library', href: '/src/omponents/educationSection.tsx:81:16' },
+  ];
 
   const partners = [
     { name: 'UNAM', href: 'https://www.unam.edu.na', image: unamLogo },
@@ -59,7 +65,22 @@ const Footer = () => {
               </div>
             </div>
 
-           
+            {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              {quicklinks.map((link) => (
+                <li key={link.name}>
+                  <a 
+                    href={link.href} 
+                    className="text-white/80 hover:text-uranium-green transition-colors duration-200"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
             {/* Resources */}
             <div>
